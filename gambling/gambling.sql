@@ -26,7 +26,7 @@ CREATE TABLE sorteo (
 CREATE TABLE apuesta (
   id_jugador BIGINT UNSIGNED NOT NULL,
   id_sorteo BIGINT UNSIGNED NOT NULL,
-  fecha_apuesta DATE NOT NULL DEFAULT NOW(),
+  fecha_apuesta DATE NOT NULL DEFAULT (CURRENT_DATE),
   estado ENUM('PENDIENTE', 'GANADA', 'PERDIDA') NOT NULL DEFAULT 'PENDIENTE',
   premio DECIMAL(10, 2),
   apuesta JSON,
