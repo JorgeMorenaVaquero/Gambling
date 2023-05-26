@@ -4,11 +4,11 @@ USE gambling;
 
 CREATE TABLE jugador (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  dni CHAR(10) NOT NULL UNIQUE,
+  dni CHAR(10) UNIQUE NOT NULL,
   dinero DECIMAL(16, 2) NOT NULL DEFAULT 0,
-  correo_electronico VARCHAR(255) NOT NULL,
+  correo_electronico VARCHAR(255) UNIQUE NOT NULL,
   contrasenna CHAR(64) NOT NULL,
-  telefono VARCHAR(15) NOT NULL,
+  telefono VARCHAR(15) UNIQUE NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -27,7 +27,8 @@ CREATE TABLE apuesta (
   id_jugador BIGINT UNSIGNED NOT NULL,
   id_sorteo BIGINT UNSIGNED NOT NULL,
   fecha_apuesta DATE NOT NULL DEFAULT NOW(),
-  premio BOOLEAN,
+  estado ENUM('PENDIENTE', 'GANADA', 'PERDIDA') NOT NULL DEFAULT 'PENDIENTE',
+  premio DECIMAL(10, 2),
   apuesta JSON,
   PRIMARY KEY (id_jugador, id_sorteo),
   FOREIGN KEY (id_jugador) REFERENCES jugador (id),
