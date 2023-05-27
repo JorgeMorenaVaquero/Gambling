@@ -48,5 +48,11 @@ public abstract class Sorteo {
 		this.fechaHora = fechaHora;
 		this.tipo = tipo;
 	}
-
+	
+	/**
+	 * Metodo abstracto para generar una apuesta
+	 * 
+	 * @return Apuesta
+	 */
+	public abstract Apuesta generarApuesta();
 }
