@@ -5,12 +5,12 @@ import java.sql.Timestamp;
 
 public abstract class Sorteo {
 
-    private long id;
-    private Date fechaApertura;
-    private Date fechaCierre;
-    private Timestamp fechaHora;
-    private TipoSorteo tipo;
-    private String resultado;
+    protected long id;
+    protected Date fechaApertura;
+    protected Date fechaCierre;
+    protected Timestamp fechaHora;
+    protected TipoSorteo tipo;
+    protected String resultado;
     
 
     /**
@@ -22,13 +22,12 @@ public abstract class Sorteo {
      * @param fechaHora
      * @param resultado
      */
-	public Sorteo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, TipoSorteo tipo, String resultado) {
+	public Sorteo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, String resultado) {
 		super();
 		this.id = id;
 		this.fechaApertura = fechaApertura;
 		this.fechaCierre = fechaCierre;
 		this.fechaHora = fechaHora;
-		this.tipo = tipo;
 		this.resultado = resultado;
 	}
 	
@@ -40,19 +39,18 @@ public abstract class Sorteo {
 	 * @param fechaCierre
 	 * @param fechaHora
 	 */
-	public Sorteo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, TipoSorteo tipo) {
+	public Sorteo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora) {
 		super();
 		this.id = id;
 		this.fechaApertura = fechaApertura;
 		this.fechaCierre = fechaCierre;
 		this.fechaHora = fechaHora;
-		this.tipo = tipo;
 	}
 	
 	/**
-	 * Metodo abstracto para generar una apuesta
+	 * Metodo abstracto para generar el resultado del sorteo
 	 * 
-	 * @return Apuesta
+	 * 
 	 */
-	public abstract Apuesta generarApuesta();
+	public abstract void generarResultado();
 }
