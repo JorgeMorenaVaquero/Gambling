@@ -1,5 +1,7 @@
 package com.daw1.gambling;
 
+import java.math.BigDecimal;
+
 public class App {
 	
     public static void main(String[] args) throws Exception {
@@ -8,6 +10,10 @@ public class App {
     	//app.iniciar();
     	
 		ConexionBaseDeDatos.getConexion();
+		
+		JugadorController jugadorController = new JugadorController();
+		
+		jugadorController.insertJugador(new Jugador("05123456A", new BigDecimal(300), "correo.pureba@pureba.com", "jugadorPrueba", "+34666777888"));
     }
 
 }

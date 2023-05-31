@@ -53,7 +53,7 @@ public class JugadorController {
 
 		try {
 
-			String sql = "INSERT INTO jugador VALUES (?,?,?,?,?)";
+			String sql = "INSERT INTO jugador(dni, dinero, correo_electronico, contrasenna, telefono) VALUES (?,?,?,?,?)";
 
 			statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, jugador.getDni());
