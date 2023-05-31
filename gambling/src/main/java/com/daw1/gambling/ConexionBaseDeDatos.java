@@ -27,6 +27,8 @@ public class ConexionBaseDeDatos {
 
 			Class.forName(driver);
 			conexion = DriverManager.getConnection(url, usuario, contrasenna);
+			
+			conexion.setAutoCommit(false);
 		} catch (ClassNotFoundException e) {
 			 System.out.println("Error. No se ha podido cargar el driver");
 			 e.printStackTrace();
