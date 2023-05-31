@@ -27,8 +27,9 @@ public class App {
 		JugadorController jugadorController = new JugadorController();
 		
 		Jugador jugador = new Jugador("05123456B", new BigDecimal(300), "correo.prueba@pureba.com", "jugadorPrueba", "+34666777889");
-		//jugadorController.insertJugador(jugador);
+		jugadorController.insertJugador(jugador);
 		
+		jugadorController.retirarSaldo(jugador, new BigDecimal(20));
 		
 		ApuestaController apuestasController = new ApuestaController();
 		
