@@ -1,4 +1,4 @@
-package com.daw1.gambling;
+package com.daw1.gambling.resultado;
 
 public class ResultadoPrimitiva extends Resultado {
 	

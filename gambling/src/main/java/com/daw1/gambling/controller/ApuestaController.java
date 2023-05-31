@@ -1,4 +1,4 @@
-package com.daw1.gambling;
+package com.daw1.gambling.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -10,6 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.daw1.gambling.Apuesta;
+import com.daw1.gambling.ConexionBaseDeDatos;
+import com.daw1.gambling.enums.EstadoApuesta;
+import com.daw1.gambling.enums.TipoSorteo;
+import com.daw1.gambling.resultado.Resultado;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ApuestaController {

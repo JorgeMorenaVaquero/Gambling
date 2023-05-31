@@ -1,4 +1,4 @@
-package com.daw1.gambling;
+package com.daw1.gambling.controller;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -12,6 +12,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.daw1.gambling.ConexionBaseDeDatos;
+import com.daw1.gambling.enums.TipoSorteo;
+import com.daw1.gambling.resultado.Resultado;
+import com.daw1.gambling.sorteo.Sorteo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SorteoController {

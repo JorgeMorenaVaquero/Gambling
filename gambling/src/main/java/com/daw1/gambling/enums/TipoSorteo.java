@@ -1,4 +1,15 @@
-package com.daw1.gambling;
+package com.daw1.gambling.enums;
+
+import com.daw1.gambling.resultado.ResultadoEuromillones;
+import com.daw1.gambling.resultado.ResultadoGordo;
+import com.daw1.gambling.resultado.ResultadoLoteriaNacional;
+import com.daw1.gambling.resultado.ResultadoPrimitiva;
+import com.daw1.gambling.resultado.ResultadoQuiniela;
+import com.daw1.gambling.sorteo.SorteoEuromillones;
+import com.daw1.gambling.sorteo.SorteoGordo;
+import com.daw1.gambling.sorteo.SorteoLoteriaNacional;
+import com.daw1.gambling.sorteo.SorteoPrimitiva;
+import com.daw1.gambling.sorteo.SorteoQuiniela;
 
 public enum TipoSorteo {
 	LOTERIA_NACIONAL("LOTERIA_NACIONAL", ResultadoLoteriaNacional.class, SorteoLoteriaNacional.class),

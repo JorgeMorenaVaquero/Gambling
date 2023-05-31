@@ -1,4 +1,4 @@
-package com.daw1.gambling;
+package com.daw1.gambling.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.daw1.gambling.ConexionBaseDeDatos;
+import com.daw1.gambling.Jugador;
 
 public class JugadorController {
 

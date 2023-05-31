@@ -1,4 +1,4 @@
-package com.daw1.gambling;
+package com.daw1.gambling.service;
 
 public class AutentificacionService {
 

@@ -1,7 +1,11 @@
-package com.daw1.gambling;
+package com.daw1.gambling.sorteo;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+
+import com.daw1.gambling.Apuesta;
+import com.daw1.gambling.enums.TipoSorteo;
+import com.daw1.gambling.resultado.ResultadoLoteriaNacional;
 
 public class SorteoLoteriaNacional extends Sorteo {
 

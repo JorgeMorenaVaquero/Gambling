@@ -1,4 +1,4 @@
-package com.daw1.gambling;
+package com.daw1.gambling.resultado;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
