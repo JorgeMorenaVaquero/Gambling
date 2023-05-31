@@ -47,10 +47,10 @@ public class ApuestaController {
 			e.printStackTrace();
 			throw e;
 		} finally {
-			if (result == null || result.isClosed()) {
+			if (result == null || !result.isClosed()) {
 				result.close();
 			}
-			if (statement == null || statement.isClosed()) {
+			if (statement == null || !statement.isClosed()) {
 				statement.close();
 			}
 		}
