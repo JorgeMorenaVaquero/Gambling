@@ -5,23 +5,22 @@ import java.sql.Timestamp;
 
 public abstract class Sorteo {
 
-    protected long id;
-    protected Date fechaApertura;
-    protected Date fechaCierre;
-    protected Timestamp fechaHora;
-    protected TipoSorteo tipo;
-    protected Resultado resultado;
-    
+	protected long id;
+	protected Date fechaApertura;
+	protected Date fechaCierre;
+	protected Timestamp fechaHora;
+	protected TipoSorteo tipo;
+	protected Resultado resultado;
 
-    /**
-     * Constructor para un sorteo con resultado
-     * 
-     * @param id
-     * @param fechaApertura
-     * @param fechaCierre
-     * @param fechaHora
-     * @param resultado
-     */
+	/**
+	 * Constructor para un sorteo con resultado
+	 * 
+	 * @param id
+	 * @param fechaApertura
+	 * @param fechaCierre
+	 * @param fechaHora
+	 * @param resultado
+	 */
 	public Sorteo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, Resultado resultado) {
 		super();
 		this.id = id;
@@ -30,7 +29,7 @@ public abstract class Sorteo {
 		this.fechaHora = fechaHora;
 		this.resultado = resultado;
 	}
-	
+
 	/**
 	 * Constructor para un sorteo sin resultado
 	 * 
@@ -46,12 +45,40 @@ public abstract class Sorteo {
 		this.fechaCierre = fechaCierre;
 		this.fechaHora = fechaHora;
 	}
-	
+
+	public long getId() {
+		return id;
+	}
+
+	public Date getFechaApertura() {
+		return fechaApertura;
+	}
+
+	public Date getFechaCierre() {
+		return fechaCierre;
+	}
+
+	public Timestamp getFechaHora() {
+		return fechaHora;
+	}
+
+	public TipoSorteo getTipo() {
+		return tipo;
+	}
+
+	public Resultado getResultado() {
+		return resultado;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	/**
 	 * Metodo para generar el resultado del sorteo
 	 */
 	public abstract void generarResultado();
-	
+
 	/**
 	 * Método para generar una apuesta
 	 * 

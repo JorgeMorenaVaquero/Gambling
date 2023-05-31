@@ -48,16 +48,16 @@ public class SorteoController {
 			e.printStackTrace();
 			throw e;
 		} finally {
-			if (result == null || result.isClosed()) {
+			if (result == null || !result.isClosed()) {
 				result.close();
 			}
-			if (statement == null || statement.isClosed()) {
+			if (statement == null || !statement.isClosed()) {
 				statement.close();
 			}
 		}
 	}
 
-	public void insertSorteo(Jugador jugador) throws IOException, SQLException, ClassNotFoundException {
+	public void insertSorteo(Sorteo sorteo) throws IOException, SQLException, ClassNotFoundException {
 
 		Connection conn = ConexionBaseDeDatos.getConexion();
 		PreparedStatement statement = null;
@@ -65,20 +65,20 @@ public class SorteoController {
 
 		try {
 
-			String sql = "INSERT INTO jugador(dni, dinero, correo_electronico, contrasenna, telefono) VALUES (?,?,?,?,?)";
+			String sql = "INSERT INTO sorteo(fechaApertura, fechaCierre, fechaHora, tipo, resultado) VALUES (?,?,?,?,?)";
 
 			statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			statement.setString(1, jugador.getDni());
-			statement.setBigDecimal(2, jugador.getDinero());
-			statement.setString(3, jugador.getCorreoElectronico());
-			statement.setString(4, jugador.getContrasenna());
-			statement.setString(5, jugador.getTelefono());
+			statement.setDate(1, sorteo.getFechaApertura());
+			statement.setDate(2, sorteo.getFechaCierre());
+			statement.setTimestamp(3, sorteo.getFechaHora());
+			statement.setString(4, sorteo.getTipo().getValue());
+			statement.setString(5, new ObjectMapper().writeValueAsString(sorteo.getResultado()));
 
 			if (statement.executeUpdate() > 0) {
 				generatedKeys = statement.getGeneratedKeys();
 
 				if (generatedKeys.next()) {
-					jugador.setId(generatedKeys.getLong(1));
+					sorteo.setId(generatedKeys.getLong(1));
 				}
 			}
 
@@ -90,10 +90,10 @@ public class SorteoController {
 			e.printStackTrace();
 			throw e;
 		} finally {
-			if (generatedKeys == null || generatedKeys.isClosed()) {
+			if (generatedKeys == null || !generatedKeys.isClosed()) {
 				generatedKeys.close();
 			}
-			if (statement == null || statement.isClosed()) {
+			if (statement == null || !statement.isClosed()) {
 				statement.close();
 			}
 		}
