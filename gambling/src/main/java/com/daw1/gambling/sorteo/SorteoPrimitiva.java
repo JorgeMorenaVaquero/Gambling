@@ -52,4 +52,9 @@ public class SorteoPrimitiva extends Sorteo {
 		return null;
 	}
 
+	@Override
+	public String toString() {
+		return "SorteoPrimitiva [" + super.toString() + "]";
+	}
+
 }
