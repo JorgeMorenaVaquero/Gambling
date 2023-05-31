@@ -13,9 +13,10 @@ import com.daw1.gambling.Jugador;
 
 public class JugadorController {
 
-	public Jugador getJugador(String correoElectronico, String contrasenna) throws IOException, SQLException, ClassNotFoundException {
+	public Jugador getJugador(String correoElectronico, String contrasenna)
+			throws IOException, SQLException, ClassNotFoundException {
 		Connection connection = null;
-		
+
 		try {
 			connection = ConexionBaseDeDatos.getConexion();
 		} catch (ClassNotFoundException | SQLException | IOException e) {
@@ -46,8 +47,6 @@ public class JugadorController {
 
 				jugador = new Jugador(id, dni, dinero, correoElectronicoRecuperado, contrasennaRecuperada, telefono);
 			}
-
-			return jugador;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
@@ -59,11 +58,13 @@ public class JugadorController {
 				statement.close();
 			}
 		}
+
+		return jugador;
 	}
 
 	public void insertJugador(Jugador jugador) throws IOException, SQLException, ClassNotFoundException {
 		Connection connection = null;
-		
+
 		try {
 			connection = ConexionBaseDeDatos.getConexion();
 		} catch (ClassNotFoundException | SQLException | IOException e) {
@@ -101,6 +102,40 @@ public class JugadorController {
 			if (generatedKeys == null || !generatedKeys.isClosed()) {
 				generatedKeys.close();
 			}
+			if (statement == null || !statement.isClosed()) {
+				statement.close();
+			}
+		}
+	}
+
+	public void retirarSaldo(Jugador jugador, BigDecimal saldo) throws ClassNotFoundException, IOException, SQLException {
+		Connection connection = null;
+		
+		try {
+			connection = ConexionBaseDeDatos.getConexion();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+			throw e;
+		}
+
+		PreparedStatement statement = null;
+		
+		try {
+			String sql = "UPDATE jugador SET saldo=? WHERE id=?";
+			statement = connection.prepareStatement(sql);
+			
+			statement.setBigDecimal(1, jugador.getDinero().subtract(saldo));
+			statement.setLong(2, jugador.getId());
+			
+			statement.executeUpdate();
+
+			connection.commit();
+		} catch (SQLException e) {
+			connection.rollback();
+
+			e.printStackTrace();
+			throw e;
+		} finally {
 			if (statement == null || !statement.isClosed()) {
 				statement.close();
 			}

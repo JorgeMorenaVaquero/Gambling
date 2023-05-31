@@ -62,6 +62,10 @@ public class Jugador {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	public void setDinero(BigDecimal dinero) {
+		this.dinero = dinero;
+	}
 
 	@Override
 	public String toString() {
