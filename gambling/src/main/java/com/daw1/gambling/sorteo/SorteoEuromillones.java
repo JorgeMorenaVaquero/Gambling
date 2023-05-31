@@ -48,4 +48,10 @@ public class SorteoEuromillones extends Sorteo {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String toString() {
+		return "SorteoEuromillones [" + super.toString() + "]";
+	}
+
 }

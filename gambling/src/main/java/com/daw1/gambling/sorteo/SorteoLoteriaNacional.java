@@ -49,4 +49,9 @@ public class SorteoLoteriaNacional extends Sorteo {
 		return null;
 	}
 
+	@Override
+	public String toString() {
+		return "SorteoLoteriaNacional [" + super.toString() + "]";
+	}
+
 }

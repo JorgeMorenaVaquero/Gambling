@@ -89,4 +89,12 @@ public abstract class Sorteo {
 	 * @return Apuesta generada
 	 */
 	public abstract Apuesta generarApuesta();
+
+	@Override
+	public String toString() {
+		return "id=" + id + ", fechaApertura=" + fechaApertura + ", fechaCierre=" + fechaCierre + ", fechaHora="
+				+ fechaHora + ", tipo=" + tipo + ", resultado=" + resultado;
+	}
+	
+	
 }
