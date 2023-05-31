@@ -2,7 +2,6 @@ package com.daw1.gambling;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -10,37 +9,40 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SorteoController {
-	public List<Sorteo> getSorteos() throws IOException, SQLException, ClassNotFoundException {
+	public List<Sorteo> getSorteos() throws IOException, SQLException, ClassNotFoundException, Exception {
 		Connection conn = ConexionBaseDeDatos.getConexion();
 
-		String sql = "SELECT id, fechaApertura, fechaCierre, fechaHora, tipo, resultado FROM sorteo";
-		List<Sorteo> sorteos = null;
+		List<Sorteo> sorteos = new ArrayList<>();
 		Statement statement = null;
 		ResultSet result = null;
 
 		try {
-
 			statement = conn.createStatement();
-
+			String sql = "SELECT id, fecha_apertura, fecha_cierre, fecha_hora, tipo, resultado FROM sorteo";
 			result = statement.executeQuery(sql);
 
 			while (result.next()) {
 				long id = result.getLong("id");
-				Date fechaApertura = result.getDate("fechaApertura");
-				Date fechaCierre = result.getDate("fechaCierre");
-				Timestamp fechaHora = result.getTimestamp("fechaHora");
+				Date fechaApertura = result.getDate("fecha_apertura");
+				Date fechaCierre = result.getDate("fecha_cierre");
+				Timestamp fechaHora = result.getTimestamp("fecha_hora");
 				TipoSorteo tipo = TipoSorteo.valueOf(result.getString("tipo"));
 				String resultadoJson = result.getString("resultado");
-				Resultado resultado = (Resultado) new ObjectMapper().readValue(resultadoJson, tipo.getClase());
+				Resultado resultado = null;
+				if (resultadoJson != null) {
+					resultado = (Resultado) new ObjectMapper().readValue(resultadoJson, tipo.getClaseResultado());
+				} 
 
-				Constructor<?> constructor = tipo.getClase().getConstructor(id, fechaApertura, fechaCierre, fechaHora,
-						tipo, resultado);
-
+				Constructor<?> constructor = tipo.getClaseSorteo().getConstructor(long.class, Date.class, Date.class, Timestamp.class, tipo.getClaseResultado());
+				Sorteo sorteo = (Sorteo) constructor.newInstance(id, fechaApertura, fechaCierre, fechaHora, resultado);
+				
+				sorteos.add(sorteo);
 			}
 
 			return sorteos;

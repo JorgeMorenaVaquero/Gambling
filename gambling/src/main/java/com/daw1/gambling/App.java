@@ -1,6 +1,11 @@
 package com.daw1.gambling;
 
+import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.sql.Timestamp;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class App {
 	
@@ -19,9 +24,19 @@ public class App {
 		
 		ApuestaController apuestasController = new ApuestaController();
 		
+		/*
 		for (Apuesta apuesta : apuestasController.seleccionarApuestasJugador(1)) {
 			System.out.println(apuesta);
 		}
+		*/
+		
+		
+		SorteoController sorteoController = new SorteoController();
+		
+		for (Sorteo sorteo : sorteoController.getSorteos()) {
+			System.out.println(sorteo);
+		}
+
     }
 
 }
