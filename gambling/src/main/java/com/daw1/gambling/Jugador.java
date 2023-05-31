@@ -1,6 +1,9 @@
 package com.daw1.gambling;
 
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+
+import com.google.common.hash.Hashing;
 
 public class Jugador {
 
@@ -18,7 +21,7 @@ public class Jugador {
 		this.dni = dni;
 		this.dinero = dinero;
 		this.correoElectronico = correoElectronico;
-		this.contrasenna = contrasenna;
+		this.contrasenna = Hashing.sha256().hashString(contrasenna, StandardCharsets.UTF_8).toString();;
 		this.telefono = telefono;
 	}
 	
@@ -28,7 +31,7 @@ public class Jugador {
 		this.dni = dni;
 		this.dinero = dinero;
 		this.correoElectronico = correoElectronico;
-		this.contrasenna = contrasenna;
+		this.contrasenna = Hashing.sha256().hashString(contrasenna, StandardCharsets.UTF_8).toString();;
 		this.telefono = telefono;
 	}
 
