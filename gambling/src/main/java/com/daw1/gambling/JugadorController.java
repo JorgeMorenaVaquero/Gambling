@@ -77,6 +77,13 @@ public class JugadorController {
 
 			e.printStackTrace();
 			throw e;
+		} finally {
+			if (generatedKeys == null || generatedKeys.isClosed()) {
+				generatedKeys.close();
+			}
+			if (statement == null || statement.isClosed()) {
+				statement.close();
+			}
 		}
 	}
 }
