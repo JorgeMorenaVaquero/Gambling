@@ -21,5 +21,45 @@ public class Jugador {
 		this.contrasenna = contrasenna;
 		this.telefono = telefono;
 	}
+	
+	public Jugador(String dni, BigDecimal dinero, String correoElectronico, String contrasenna,
+			String telefono) {
+		super();
+		this.dni = dni;
+		this.dinero = dinero;
+		this.correoElectronico = correoElectronico;
+		this.contrasenna = contrasenna;
+		this.telefono = telefono;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public BigDecimal getDinero() {
+		return dinero;
+	}
+
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+
+	public String getContrasenna() {
+		return contrasenna;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	
 
 }
