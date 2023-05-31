@@ -7,5 +7,14 @@ public class ResultadoQuiniela extends Resultado {
 	private int bloque;
 	//apuesta sería 1, X (empate) o 2
 	private char apuesta;
+	
+	@Override
+	public String toString() {
+		return "ResultadoQuiniela:\n"
+				+ "equipo1 {" + equipo1 + "}, equipo2 {" + equipo2 + "}, bloque {" + bloque + "}, apuesta {"
+				+ apuesta + "}";
+	}
+	
+	
 
 }
