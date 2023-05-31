@@ -4,9 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class SorteoLoteriaNacional extends Sorteo {
-	
-	
-	
+
 	/**
 	 * Constructor para un sorteo de loteria nacional con resultado
 	 * 
@@ -16,13 +14,15 @@ public class SorteoLoteriaNacional extends Sorteo {
 	 * @param fechaHora
 	 * @param resultado
 	 */
-	public SorteoLoteriaNacional(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, ResultadoLoteriaNacional resultado) {
+	public SorteoLoteriaNacional(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora,
+			ResultadoLoteriaNacional resultado) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.LOTERIA_NACIONAL;
 	}
-	
+
 	/**
 	 * Constructor para un sorteo de loteria nacional sin resultado
+	 * 
 	 * @param id
 	 * @param fechaApertura
 	 * @param fechaCierre
@@ -36,7 +36,7 @@ public class SorteoLoteriaNacional extends Sorteo {
 	@Override
 	public void generarResultado() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -44,5 +44,5 @@ public class SorteoLoteriaNacional extends Sorteo {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 }

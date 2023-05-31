@@ -4,9 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class SorteoGordo extends Sorteo {
-	
-	
-	
+
 	/**
 	 * Constructor para un sorteo de el Gordo con resultado
 	 * 
@@ -20,9 +18,10 @@ public class SorteoGordo extends Sorteo {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.GORDO;
 	}
-	
+
 	/**
 	 * Constructor para un sorteo de el Gordo sin resultado
+	 * 
 	 * @param id
 	 * @param fechaApertura
 	 * @param fechaCierre
@@ -32,11 +31,11 @@ public class SorteoGordo extends Sorteo {
 		super(id, fechaApertura, fechaCierre, fechaHora);
 		this.tipo = TipoSorteo.GORDO;
 	}
-	
+
 	@Override
 	public void generarResultado() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -44,7 +43,5 @@ public class SorteoGordo extends Sorteo {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 
 }

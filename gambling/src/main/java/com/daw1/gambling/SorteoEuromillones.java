@@ -5,8 +5,6 @@ import java.sql.Timestamp;
 
 public class SorteoEuromillones extends Sorteo {
 
-	
-
 	/**
 	 * Constructor de un sorteo de euromillones con resultado
 	 * 
@@ -16,7 +14,8 @@ public class SorteoEuromillones extends Sorteo {
 	 * @param fechaHora
 	 * @param resultado
 	 */
-	public SorteoEuromillones(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, ResultadoEuromillones resultado) {
+	public SorteoEuromillones(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora,
+			ResultadoEuromillones resultado) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.EUROMILLONES;
 	}

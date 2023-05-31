@@ -3,10 +3,8 @@ package com.daw1.gambling;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class SorteoPrimitiva extends Sorteo{
-	
-	
-	
+public class SorteoPrimitiva extends Sorteo {
+
 	/**
 	 * Constructor para un sorteo de primitiva con resultado
 	 * 
@@ -22,7 +20,7 @@ public class SorteoPrimitiva extends Sorteo{
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.PRIMITIVA;
 	}
-	
+
 	/**
 	 * Constructor para un sorteo de primitiva sin resultado
 	 * 
@@ -33,8 +31,8 @@ public class SorteoPrimitiva extends Sorteo{
 	 * @param tipo
 	 * @param resultado
 	 */
-	public SorteoPrimitiva(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora,
-			int[] combinacion, int reintegro) {
+	public SorteoPrimitiva(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, int[] combinacion,
+			int reintegro) {
 		super(id, fechaApertura, fechaCierre, fechaHora);
 		this.tipo = TipoSorteo.PRIMITIVA;
 	}

@@ -4,9 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class SorteoQuiniela extends Sorteo {
-	
-	
-	
+
 	/**
 	 * Constructor para un sorteo de quiniela con resultado
 	 * 
@@ -16,11 +14,12 @@ public class SorteoQuiniela extends Sorteo {
 	 * @param fechaHora
 	 * @param resultado
 	 */
-	public SorteoQuiniela(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, ResultadoQuiniela resultado) {
+	public SorteoQuiniela(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora,
+			ResultadoQuiniela resultado) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.QUINIELA;
 	}
-	
+
 	/**
 	 * Constructor para un sorteo de quiniela sin resultado
 	 * 
@@ -37,7 +36,7 @@ public class SorteoQuiniela extends Sorteo {
 	@Override
 	public void generarResultado() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
