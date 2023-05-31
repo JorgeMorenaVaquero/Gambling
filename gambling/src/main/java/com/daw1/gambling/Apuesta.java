@@ -53,6 +53,30 @@ public class Apuesta {
 		this.resultado = resultado;
 	}
 
+	public long getIdJugador() {
+		return idJugador;
+	}
+
+	public long getIdSorteo() {
+		return idSorteo;
+	}
+
+	public Date getFechaApuesta() {
+		return fechaApuesta;
+	}
+
+	public EstadoApuesta getEstado() {
+		return estado;
+	}
+
+	public BigDecimal getPremio() {
+		return premio;
+	}
+
+	public Resultado getResultado() {
+		return resultado;
+	}
+
 	@Override
 	public String toString() {
 		return "Apuesta [idJugador=" + idJugador + ", idSorteo=" + idSorteo + ", fechaApuesta=" + fechaApuesta

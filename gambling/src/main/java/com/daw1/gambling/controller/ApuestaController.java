@@ -15,11 +15,12 @@ import com.daw1.gambling.ConexionBaseDeDatos;
 import com.daw1.gambling.enums.EstadoApuesta;
 import com.daw1.gambling.enums.TipoSorteo;
 import com.daw1.gambling.resultado.Resultado;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ApuestaController {
 	
-	public List<Apuesta> seleccionarApuestasJugador(long idJugador) throws SQLException, ClassNotFoundException, IOException {
+	public List<Apuesta> getApuestasJugador(long idJugador) throws SQLException, ClassNotFoundException, IOException {
 		List<Apuesta> apuestas = new ArrayList<>();
 
 		Connection connection = null;
@@ -67,6 +68,43 @@ public class ApuestaController {
 		}
 		
 		return apuestas;
+	}
+	
+	public void insertApuesta(Apuesta apuesta) throws SQLException, ClassNotFoundException, IOException {
+		Connection connection = null;
+		
+		try {
+			connection = ConexionBaseDeDatos.getConexion();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+		PreparedStatement statement = null;
+
+		try {
+			String sql = "INSERT INTO apuesta (id_jugador, id_sorteo, fecha_apuesta, estado, premio, apuesta) VALUES (?, ?, ?, ?, ?, ?)";
+			statement = connection.prepareStatement(sql);
+			statement.setLong(1, apuesta.getIdJugador());
+			statement.setLong(2, apuesta.getIdSorteo());
+			statement.setDate(3, apuesta.getFechaApuesta());
+			statement.setString(4, apuesta.getEstado().toString());
+			statement.setBigDecimal(5, apuesta.getPremio());
+			statement.setString(6, new ObjectMapper().writeValueAsString(apuesta.getResultado()));
+
+			statement.executeUpdate();
+			
+			connection.commit();
+		} catch (SQLException e) {
+			connection.rollback();
+
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if (statement == null || !statement.isClosed()) {
+				statement.close();
+			}
+		}
 	}
 
 }
