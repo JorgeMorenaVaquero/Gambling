@@ -5,9 +5,7 @@ import java.sql.Timestamp;
 
 public class SorteoLoteriaNacional extends Sorteo {
 	
-	private int euros;
-	private int serie;
-	private int fraccion;
+	
 	
 	/**
 	 * Constructor para un sorteo de loteria nacional con resultado
@@ -17,17 +15,10 @@ public class SorteoLoteriaNacional extends Sorteo {
 	 * @param fechaCierre
 	 * @param fechaHora
 	 * @param resultado
-	 * @param euros
-	 * @param serie
-	 * @param fraccion
 	 */
-	public SorteoLoteriaNacional(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, ResultadoLoteriaNacional resultado,
-			int euros, int serie, int fraccion) {
+	public SorteoLoteriaNacional(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, ResultadoLoteriaNacional resultado) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.LOTERIA_NACIONAL;
-		this.euros = euros;
-		this.serie = serie;
-		this.fraccion = fraccion;
 	}
 	
 	/**
@@ -36,17 +27,10 @@ public class SorteoLoteriaNacional extends Sorteo {
 	 * @param fechaApertura
 	 * @param fechaCierre
 	 * @param fechaHora
-	 * @param euros
-	 * @param serie
-	 * @param fraccion
 	 */
-	public SorteoLoteriaNacional(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora,
-			int euros, int serie, int fraccion) {
+	public SorteoLoteriaNacional(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora) {
 		super(id, fechaApertura, fechaCierre, fechaHora);
 		this.tipo = TipoSorteo.LOTERIA_NACIONAL;
-		this.euros = euros;
-		this.serie = serie;
-		this.fraccion = fraccion;
 	}
 
 	@Override

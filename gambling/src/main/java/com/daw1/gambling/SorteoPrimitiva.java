@@ -5,8 +5,7 @@ import java.sql.Timestamp;
 
 public class SorteoPrimitiva extends Sorteo{
 	
-	private int[] combinacion;
-	private int reintegro;
+	
 	
 	/**
 	 * Constructor para un sorteo de primitiva con resultado
@@ -17,15 +16,11 @@ public class SorteoPrimitiva extends Sorteo{
 	 * @param fechaHora
 	 * @param tipo
 	 * @param resultado
-	 * @param combinacion
-	 * @param reintegro
 	 */
 	public SorteoPrimitiva(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora,
-			ResultadoPrimitiva resultado, int[] combinacion, int reintegro) {
+			ResultadoPrimitiva resultado) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.PRIMITIVA;
-		this.combinacion = combinacion;
-		this.reintegro = reintegro;
 	}
 	
 	/**
@@ -37,15 +32,11 @@ public class SorteoPrimitiva extends Sorteo{
 	 * @param fechaHora
 	 * @param tipo
 	 * @param resultado
-	 * @param combinacion
-	 * @param reintegro
 	 */
 	public SorteoPrimitiva(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora,
 			int[] combinacion, int reintegro) {
 		super(id, fechaApertura, fechaCierre, fechaHora);
 		this.tipo = TipoSorteo.PRIMITIVA;
-		this.combinacion = combinacion;
-		this.reintegro = reintegro;
 	}
 
 	@Override
