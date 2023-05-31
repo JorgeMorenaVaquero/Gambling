@@ -42,6 +42,13 @@ public class JugadorController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
+		} finally {
+			if (result == null || result.isClosed()) {
+				result.close();
+			}
+			if (statement == null || statement.isClosed()) {
+				statement.close();
+			}
 		}
 	}
 
