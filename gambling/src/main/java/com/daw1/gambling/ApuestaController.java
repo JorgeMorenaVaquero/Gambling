@@ -19,24 +19,26 @@ public class ApuestaController {
 
 		Connection connection = ConexionBaseDeDatos.getConexion();
 
-		PreparedStatement sentencia = null;
-		ResultSet resultado = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
 
 		try {
 			String sql = "SELECT a.id_sorteo, a.fecha_apuesta, a.estado, a.premio, a.apuesta, s.tipo FROM apuesta a INNER JOIN sorteo s ON (a.id_sorteo = s.id) WHERE id_jugador = ?";
-			sentencia = connection.prepareStatement(sql);
-			sentencia.setLong(1, idJugador);
+			statement = connection.prepareStatement(sql);
+			statement.setLong(1, idJugador);
 
-			resultado = sentencia.executeQuery();
+			result = statement.executeQuery();
 		    
-			while (resultado.next()) {
-				long idSorteo = resultado.getLong("id_sorteo");
-				Date fechaApuesta = resultado.getDate("fecha_apuesta");
-				EstadoApuesta estado = EstadoApuesta.valueOf(resultado.getString("estado"));
-				BigDecimal premio = resultado.getBigDecimal("apuesta");
-				TipoSorteo tipo = TipoSorteo.valueOf(resultado.getString("tipo"));
+			while (result.next()) {
+				long idSorteo = result.getLong("id_sorteo");
+				Date fechaApuesta = result.getDate("fecha_apuesta");
+				EstadoApuesta estado = EstadoApuesta.valueOf(result.getString("estado"));
+				BigDecimal premio = result.getBigDecimal("apuesta");
+				TipoSorteo tipo = TipoSorteo.valueOf(result.getString("tipo"));
+				String resultadoJson = result.getString("resultado");
+				Resultado resultado = (Resultado) new ObjectMapper().readValue(resultadoJson, tipo.getClase());
 
-				Apuesta apuesta = new Apuesta(idJugador, idSorteo, fechaApuesta, estado, premio, (Resultado) new ObjectMapper().readValue(resultado.getString("resultado"), tipo.getClase()));
+				Apuesta apuesta = new Apuesta(idJugador, idSorteo, fechaApuesta, estado, premio, resultado);
 
 				apuestas.add(apuesta);
 			}
@@ -45,11 +47,11 @@ public class ApuestaController {
 			e.printStackTrace();
 			throw e;
 		} finally {
-			if (resultado == null || resultado.isClosed()) {
-				resultado.close();
+			if (result == null || result.isClosed()) {
+				result.close();
 			}
-			if (sentencia == null || sentencia.isClosed()) {
-				sentencia.close();
+			if (statement == null || statement.isClosed()) {
+				statement.close();
 			}
 		}
 		
