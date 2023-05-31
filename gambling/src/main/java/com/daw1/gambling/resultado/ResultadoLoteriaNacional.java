@@ -30,8 +30,9 @@ public class ResultadoLoteriaNacional extends Resultado {
 
 	@Override
 	public String toString() {
-		return "ResultadoLoteriaNacional [numero=" + numero + ", euros=" + euros + ", serie=" + serie + ", fraccion="
-				+ fraccion + "]";
+		return "Resultado Loteria Nacional:\n"
+				+ "numero {" + numero + "}, euros {" + euros + "}, serie {" + serie + "}, fraccion {"
+				+ fraccion + "}";
 	}
 
 }
