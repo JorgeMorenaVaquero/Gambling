@@ -23,7 +23,7 @@ public class SorteoLoteriaNacional extends Sorteo {
 	 * @param serie
 	 * @param fraccion
 	 */
-	public SorteoLoteriaNacional(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, String resultado,
+	public SorteoLoteriaNacional(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, ResultadoLoteriaNacional resultado,
 			long numero, int euros, int serie, int fraccion) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.LOTERIA_NACIONAL;
@@ -58,6 +58,12 @@ public class SorteoLoteriaNacional extends Sorteo {
 	public void generarResultado() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Apuesta generarApuesta() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

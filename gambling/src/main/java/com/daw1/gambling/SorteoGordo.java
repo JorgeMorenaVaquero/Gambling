@@ -21,7 +21,7 @@ public class SorteoGordo extends Sorteo {
 	 * @param numClave
 	 * @param reintegro
 	 */
-	public SorteoGordo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, String resultado,
+	public SorteoGordo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, ResultadoGordo resultado,
 			int[] combinacion, int numClave, int reintegro) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.GORDO;
@@ -53,6 +53,12 @@ public class SorteoGordo extends Sorteo {
 	public void generarResultado() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Apuesta generarApuesta() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

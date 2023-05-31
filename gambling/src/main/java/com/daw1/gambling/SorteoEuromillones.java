@@ -19,7 +19,7 @@ public class SorteoEuromillones extends Sorteo {
 	 * @param combinacion
 	 * @param estrellas
 	 */
-	public SorteoEuromillones(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, String resultado,
+	public SorteoEuromillones(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, ResultadoEuromillones resultado,
 			int[] combinacion, int[] estrellas) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.EUROMILLONES;
@@ -49,6 +49,11 @@ public class SorteoEuromillones extends Sorteo {
 	@Override
 	public void generarResultado() {
 		// TODO Auto-generated method stub
+	}
 
+	@Override
+	public Apuesta generarApuesta() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

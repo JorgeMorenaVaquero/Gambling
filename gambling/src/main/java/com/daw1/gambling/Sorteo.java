@@ -10,7 +10,7 @@ public abstract class Sorteo {
     protected Date fechaCierre;
     protected Timestamp fechaHora;
     protected TipoSorteo tipo;
-    protected String resultado;
+    protected Resultado resultado;
     
 
     /**
@@ -22,7 +22,7 @@ public abstract class Sorteo {
      * @param fechaHora
      * @param resultado
      */
-	public Sorteo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, String resultado) {
+	public Sorteo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, Resultado resultado) {
 		super();
 		this.id = id;
 		this.fechaApertura = fechaApertura;
@@ -48,9 +48,14 @@ public abstract class Sorteo {
 	}
 	
 	/**
-	 * Metodo abstracto para generar el resultado del sorteo
-	 * 
-	 * 
+	 * Metodo para generar el resultado del sorteo
 	 */
 	public abstract void generarResultado();
+	
+	/**
+	 * Método para generar una apuesta
+	 * 
+	 * @return Apuesta generada
+	 */
+	public abstract Apuesta generarApuesta();
 }

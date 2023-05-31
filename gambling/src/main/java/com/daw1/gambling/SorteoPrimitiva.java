@@ -21,7 +21,7 @@ public class SorteoPrimitiva extends Sorteo{
 	 * @param reintegro
 	 */
 	public SorteoPrimitiva(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora,
-			String resultado, int[] combinacion, int reintegro) {
+			ResultadoPrimitiva resultado, int[] combinacion, int reintegro) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.PRIMITIVA;
 		this.combinacion = combinacion;
@@ -51,7 +51,12 @@ public class SorteoPrimitiva extends Sorteo{
 	@Override
 	public void generarResultado() {
 		// TODO Auto-generated method stub
-		
+	}
+
+	@Override
+	public Apuesta generarApuesta() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

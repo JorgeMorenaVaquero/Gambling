@@ -24,7 +24,7 @@ public class SorteoQuiniela extends Sorteo {
 	 * @param bloque
 	 * @param apuesta
 	 */
-	public SorteoQuiniela(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, String resultado,
+	public SorteoQuiniela(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, ResultadoQuiniela resultado,
 			String equipo1, String equipo2, int bloque, char apuesta) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.QUINIELA;
@@ -60,6 +60,12 @@ public class SorteoQuiniela extends Sorteo {
 	public void generarResultado() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Apuesta generarApuesta() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
