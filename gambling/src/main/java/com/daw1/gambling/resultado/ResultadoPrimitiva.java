@@ -10,11 +10,11 @@ public class ResultadoPrimitiva extends Resultado {
 	private int reintegro;
 	
 	public ResultadoPrimitiva(
-			@JsonProperty("combinacion")
-			int[] combinacion, 
-			@JsonProperty("reintegro")
-			int reintegro
-			) {
+		@JsonProperty("combinacion")
+		int[] combinacion, 
+		@JsonProperty("reintegro")
+		int reintegro
+	) {
 		super();
 		this.combinacion = combinacion;
 		this.reintegro = reintegro;

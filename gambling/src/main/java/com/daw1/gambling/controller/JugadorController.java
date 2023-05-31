@@ -13,18 +13,24 @@ import com.daw1.gambling.Jugador;
 
 public class JugadorController {
 
-	public Jugador getJugador(String correoElectronico, String contrasenna)
-			throws IOException, SQLException, ClassNotFoundException {
-		Connection conn = ConexionBaseDeDatos.getConexion();
+	public Jugador getJugador(String correoElectronico, String contrasenna) throws IOException, SQLException, ClassNotFoundException {
+		Connection connection = null;
+		
+		try {
+			connection = ConexionBaseDeDatos.getConexion();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+			throw e;
+		}
 
-		String sql = "SELECT id, dni, dinero, correo_electronico, contrasenna, telefono FROM jugador WHERE correo_electronico = ? AND contrasenna = ? LIMIT 1";
 		Jugador jugador = null;
+
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
 		try {
-
-			statement = conn.prepareStatement(sql);
+			String sql = "SELECT id, dni, dinero, correo_electronico, contrasenna, telefono FROM jugador WHERE correo_electronico = ? AND contrasenna = ? LIMIT 1";
+			statement = connection.prepareStatement(sql);
 			statement.setString(1, correoElectronico);
 			statement.setString(2, contrasenna);
 
@@ -56,16 +62,21 @@ public class JugadorController {
 	}
 
 	public void insertJugador(Jugador jugador) throws IOException, SQLException, ClassNotFoundException {
+		Connection connection = null;
+		
+		try {
+			connection = ConexionBaseDeDatos.getConexion();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+			throw e;
+		}
 
-		Connection conn = ConexionBaseDeDatos.getConexion();
 		PreparedStatement statement = null;
 		ResultSet generatedKeys = null;
 
 		try {
-
 			String sql = "INSERT INTO jugador(dni, dinero, correo_electronico, contrasenna, telefono) VALUES (?,?,?,?,?)";
-
-			statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, jugador.getDni());
 			statement.setBigDecimal(2, jugador.getDinero());
 			statement.setString(3, jugador.getCorreoElectronico());
@@ -80,18 +91,17 @@ public class JugadorController {
 				}
 			}
 
-			conn.commit();
-
+			connection.commit();
 		} catch (SQLException e) {
-			conn.rollback();
+			connection.rollback();
 
 			e.printStackTrace();
 			throw e;
 		} finally {
-			if (generatedKeys == null || generatedKeys.isClosed()) {
+			if (generatedKeys == null || !generatedKeys.isClosed()) {
 				generatedKeys.close();
 			}
-			if (statement == null || statement.isClosed()) {
+			if (statement == null || !statement.isClosed()) {
 				statement.close();
 			}
 		}

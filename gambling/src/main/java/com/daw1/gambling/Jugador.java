@@ -21,7 +21,7 @@ public class Jugador {
 		this.dni = dni;
 		this.dinero = dinero;
 		this.correoElectronico = correoElectronico;
-		this.contrasenna = Hashing.sha256().hashString(contrasenna, StandardCharsets.UTF_8).toString();;
+		this.contrasenna = Hashing.sha256().hashString(contrasenna, StandardCharsets.UTF_8).toString();
 		this.telefono = telefono;
 	}
 	
@@ -31,7 +31,7 @@ public class Jugador {
 		this.dni = dni;
 		this.dinero = dinero;
 		this.correoElectronico = correoElectronico;
-		this.contrasenna = Hashing.sha256().hashString(contrasenna, StandardCharsets.UTF_8).toString();;
+		this.contrasenna = Hashing.sha256().hashString(contrasenna, StandardCharsets.UTF_8).toString();
 		this.telefono = telefono;
 	}
 

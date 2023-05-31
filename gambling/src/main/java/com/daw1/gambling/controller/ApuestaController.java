@@ -22,7 +22,14 @@ public class ApuestaController {
 	public List<Apuesta> seleccionarApuestasJugador(long idJugador) throws SQLException, ClassNotFoundException, IOException {
 		List<Apuesta> apuestas = new ArrayList<>();
 
-		Connection connection = ConexionBaseDeDatos.getConexion();
+		Connection connection = null;
+		
+		try {
+			connection = ConexionBaseDeDatos.getConexion();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+			throw e;
+		}
 
 		PreparedStatement statement = null;
 		ResultSet result = null;
@@ -47,7 +54,6 @@ public class ApuestaController {
 
 				apuestas.add(apuesta);
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;

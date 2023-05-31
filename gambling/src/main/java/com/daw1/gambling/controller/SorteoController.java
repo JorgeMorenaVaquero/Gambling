@@ -20,14 +20,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SorteoController {
 	public List<Sorteo> getSorteos() throws IOException, SQLException, ClassNotFoundException, Exception {
-		Connection conn = ConexionBaseDeDatos.getConexion();
-
 		List<Sorteo> sorteos = new ArrayList<>();
+
+		Connection connection = null;
+		
+		try {
+			connection = ConexionBaseDeDatos.getConexion();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+			throw e;
+		}
+
 		Statement statement = null;
 		ResultSet result = null;
 
 		try {
-			statement = conn.createStatement();
+			statement = connection.createStatement();
 			String sql = "SELECT id, fecha_apertura, fecha_cierre, fecha_hora, tipo, resultado FROM sorteo";
 			result = statement.executeQuery(sql);
 
@@ -48,8 +56,6 @@ public class SorteoController {
 				
 				sorteos.add(sorteo);
 			}
-
-			return sorteos;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
@@ -61,19 +67,26 @@ public class SorteoController {
 				statement.close();
 			}
 		}
+		
+		return sorteos;
 	}
 
 	public void insertSorteo(Sorteo sorteo) throws IOException, SQLException, ClassNotFoundException {
+		Connection connection = null;
+		
+		try {
+			connection = ConexionBaseDeDatos.getConexion();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+			throw e;
+		}
 
-		Connection conn = ConexionBaseDeDatos.getConexion();
 		PreparedStatement statement = null;
 		ResultSet generatedKeys = null;
 
 		try {
-
 			String sql = "INSERT INTO sorteo(fechaApertura, fechaCierre, fechaHora, tipo, resultado) VALUES (?,?,?,?,?)";
-
-			statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			statement.setDate(1, sorteo.getFechaApertura());
 			statement.setDate(2, sorteo.getFechaCierre());
 			statement.setTimestamp(3, sorteo.getFechaHora());
@@ -88,10 +101,9 @@ public class SorteoController {
 				}
 			}
 
-			conn.commit();
-
+			connection.commit();
 		} catch (SQLException e) {
-			conn.rollback();
+			connection.rollback();
 
 			e.printStackTrace();
 			throw e;

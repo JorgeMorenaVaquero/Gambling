@@ -11,15 +11,15 @@ public class ResultadoQuiniela extends Resultado {
 	private char apuesta;
 	
 	public ResultadoQuiniela(
-			@JsonProperty("equipo1")
-			String equipo1, 
-			@JsonProperty("equipo2")
-			String equipo2,
-			@JsonProperty("bloque")
-			int bloque,
-			@JsonProperty("apuesta")
-			char apuesta
-			) {
+		@JsonProperty("equipo1")
+		String equipo1, 
+		@JsonProperty("equipo2")
+		String equipo2,
+		@JsonProperty("bloque")
+		int bloque,
+		@JsonProperty("apuesta")
+		char apuesta
+	) {
 		super();
 		this.equipo1 = equipo1;
 		this.equipo2 = equipo2;

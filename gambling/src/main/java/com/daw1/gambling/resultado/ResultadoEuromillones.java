@@ -10,11 +10,11 @@ public class ResultadoEuromillones extends Resultado {
 	private int[] estrellas;
 	
 	public ResultadoEuromillones(
-			@JsonProperty("combinacion")
-			int[] combinacion, 
-			@JsonProperty("estrellas")
-			int[] estrellas
-			) {
+		@JsonProperty("combinacion")
+		int[] combinacion, 
+		@JsonProperty("estrellas")
+		int[] estrellas
+	) {
 		super();
 		this.combinacion = combinacion;
 		this.estrellas = estrellas;

@@ -11,13 +11,13 @@ public class ResultadoGordo extends Resultado {
 	private int reintegro;
 	
 	public ResultadoGordo(
-			@JsonProperty("combinacion")
-			int[] combinacion, 
-			@JsonProperty("numClave")
-			int numClave, 
-			@JsonProperty("reintegro")
-			int reintegro
-			) {
+		@JsonProperty("combinacion")
+		int[] combinacion, 
+		@JsonProperty("numClave")
+		int numClave, 
+		@JsonProperty("reintegro")
+		int reintegro
+	) {
 		super();
 		this.combinacion = combinacion;
 		this.numClave = numClave;

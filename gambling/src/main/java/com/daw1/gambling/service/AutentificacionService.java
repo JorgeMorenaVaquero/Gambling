@@ -18,10 +18,10 @@ public class AutentificacionService {
 
 		final String contrasennaHash = Hashing.sha256().hashString(contrasenna, StandardCharsets.UTF_8).toString();
 		
-		Connection conn = null;
+		Connection connection = null;
 				
 		try {
-			conn = ConexionBaseDeDatos.getConexion();
+			connection = ConexionBaseDeDatos.getConexion();
 		} catch (ClassNotFoundException | SQLException | IOException e) {
 			e.printStackTrace();
 			throw e;
@@ -32,7 +32,7 @@ public class AutentificacionService {
 		
 		try {
 			String sql = "SELECT id FROM jugador WHERE correo_electronico = ? AND contrasenna = ?";
-			statement = conn.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 			statement.setString(1, correo);
 			statement.setString(2, contrasennaHash);
 			
@@ -59,10 +59,10 @@ public class AutentificacionService {
 	public boolean puedeRegistrarse(Jugador jugador) throws ClassNotFoundException, SQLException, IOException {
 		boolean puedeRegistrarse = false;
 		
-		Connection conn = null;
+		Connection connection = null;
 				
 		try {
-			conn = ConexionBaseDeDatos.getConexion();
+			connection = ConexionBaseDeDatos.getConexion();
 		} catch (ClassNotFoundException | SQLException | IOException e) {
 			e.printStackTrace();
 			throw e;
@@ -73,7 +73,7 @@ public class AutentificacionService {
 		
 		try {
 			String sql = "SELECT COUNT(*) > 0 AS encontrados FROM jugador WHERE dni = ? OR correo_electronico = ? OR telefono = ?";
-			statement = conn.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 			statement.setString(1, jugador.getDni());
 			statement.setString(2, jugador.getCorreoElectronico());
 			statement.setString(3, jugador.getTelefono());
