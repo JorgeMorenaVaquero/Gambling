@@ -33,9 +33,9 @@ public class ApuestaController {
 				long idSorteo = result.getLong("id_sorteo");
 				Date fechaApuesta = result.getDate("fecha_apuesta");
 				EstadoApuesta estado = EstadoApuesta.valueOf(result.getString("estado"));
-				BigDecimal premio = result.getBigDecimal("apuesta");
+				BigDecimal premio = result.getBigDecimal("premio");
 				TipoSorteo tipo = TipoSorteo.valueOf(result.getString("tipo"));
-				String resultadoJson = result.getString("resultado");
+				String resultadoJson = result.getString("apuesta");
 				Resultado resultado = (Resultado) new ObjectMapper().readValue(resultadoJson, tipo.getClase());
 
 				Apuesta apuesta = new Apuesta(idJugador, idSorteo, fechaApuesta, estado, premio, resultado);

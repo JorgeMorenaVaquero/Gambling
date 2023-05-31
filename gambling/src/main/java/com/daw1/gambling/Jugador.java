@@ -59,7 +59,11 @@ public class Jugador {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Jugador [id=" + id + ", dni=" + dni + ", dinero=" + dinero + ", correoElectronico=" + correoElectronico
+				+ ", contrasenna=" + contrasenna + ", telefono=" + telefono + "]";
+	}
 
 }
