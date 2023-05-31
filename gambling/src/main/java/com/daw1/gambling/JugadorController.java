@@ -12,14 +12,14 @@ public class JugadorController {
 
 	public Jugador getJugador(String correoElectronico, String contrasenna)
 			throws IOException, SQLException, ClassNotFoundException {
+		Connection conn = ConexionBaseDeDatos.getConexion();
 
-		String sql = "SELECT id, dni, dinero, correo_electronico, contrasenna, telefono FROM jugador WHERE correo_electronico = ? AND contrasenna = ?";
+		String sql = "SELECT id, dni, dinero, correo_electronico, contrasenna, telefono FROM jugador WHERE correo_electronico = ? AND contrasenna = ? LIMIT 1";
 		Jugador jugador = null;
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
 		try {
-			Connection conn = ConexionBaseDeDatos.getConexion();
 
 			statement = conn.prepareStatement(sql);
 			statement.setString(1, correoElectronico);
@@ -39,7 +39,7 @@ public class JugadorController {
 			}
 
 			return jugador;
-		} catch (IOException | SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
 		}
