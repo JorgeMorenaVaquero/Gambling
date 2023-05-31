@@ -50,4 +50,10 @@ public class Apuesta {
 		this.resultado = resultado;
 	}
 
+	@Override
+	public String toString() {
+		return "Apuesta [idJugador=" + idJugador + ", idSorteo=" + idSorteo + ", fechaApuesta=" + fechaApuesta
+				+ ", estado=" + estado + ", premio=" + premio + ", resultado=" + resultado + "]";
+	}
+
 }
