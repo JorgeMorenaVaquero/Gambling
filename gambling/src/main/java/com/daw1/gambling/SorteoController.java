@@ -1,13 +1,18 @@
 package com.daw1.gambling;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SorteoController {
 	public List<Sorteo> getSorteos() throws IOException, SQLException, ClassNotFoundException {
@@ -26,13 +31,16 @@ public class SorteoController {
 
 			while (result.next()) {
 				long id = result.getLong("id");
-				Date dni = result.getString("dni");
-				Date dinero = result.getBigDecimal("dinero");
-				Time correoElectronicoRecuperado = result.getString("correo_electronico");
-				String contrasennaRecuperada = result.getString("contrasenna");
-				String telefono = result.getString("telefono");
+				Date fechaApertura = result.getDate("fechaApertura");
+				Date fechaCierre = result.getDate("fechaCierre");
+				Timestamp fechaHora = result.getTimestamp("fechaHora");
+				TipoSorteo tipo = TipoSorteo.valueOf(result.getString("tipo"));
+				String resultadoJson = result.getString("resultado");
+				Resultado resultado = (Resultado) new ObjectMapper().readValue(resultadoJson, tipo.getClase());
 
-				sorteos = new Jugador(id, dni, dinero, correoElectronicoRecuperado, contrasennaRecuperada, telefono);
+				Constructor<?> constructor = tipo.getClase().getConstructor(id, fechaApertura, fechaCierre, fechaHora,
+						tipo, resultado);
+
 			}
 
 			return sorteos;
