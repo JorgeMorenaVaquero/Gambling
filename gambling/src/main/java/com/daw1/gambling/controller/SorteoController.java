@@ -19,6 +19,7 @@ import com.daw1.gambling.sorteo.Sorteo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SorteoController {
+
 	public List<Sorteo> getSorteos() throws IOException, SQLException, ClassNotFoundException, Exception {
 		List<Sorteo> sorteos = new ArrayList<>();
 
@@ -116,4 +117,5 @@ public class SorteoController {
 			}
 		}
 	}
+
 }
