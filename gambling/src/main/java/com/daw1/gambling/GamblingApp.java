@@ -27,7 +27,7 @@ public class GamblingApp {
 
 	public GamblingApp() {
 		super();
-		this.teclado = new Scanner(System.in);
+		this.teclado = null;
 		this.jugadorController = new JugadorController();
 		this.sorteoController = new SorteoController();
 		this.apuestaController = new ApuestaController();
@@ -232,22 +232,34 @@ public class GamblingApp {
 	 * @throws Exception 
 	 */
 	public void iniciar() throws Exception {
-		boolean finalizado = false;
+		try {
+			teclado = new Scanner(System.in);
 
-		while (!finalizado) {
-			mostrarMenu();
-
-			System.out.print("Opción: ");
-			int opcion = Integer.parseInt(teclado.nextLine());
-
-			if (opcion == -1) {
-				finalizado = true;
-			} else {
-				System.out.println();
-				seleccionarOpcion(opcion);
+			boolean finalizado = false;
+	
+			while (!finalizado) {
+				mostrarMenu();
+	
+				System.out.print("Opción: ");
+				int opcion = Integer.parseInt(teclado.nextLine());
+	
+				if (opcion == -1) {
+					finalizado = true;
+				} else {
+					System.out.println();
+					seleccionarOpcion(opcion);
+				}
+				
+				System.out.println("\n");
 			}
-			
-			System.out.println("\n");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if (teclado != null) {
+				teclado.close();
+				teclado = null;
+			}
 		}
 	}
 
