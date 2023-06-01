@@ -3,6 +3,7 @@ package com.daw1.gambling;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -43,7 +44,8 @@ public class GamblingApp {
 		System.out.println("1 - Ver saldo");
 		System.out.println("2 - Ver apuestas realizadas");
 		System.out.println("3 - Ver sorteos activos");
-		System.out.println("4 - Cerrar sesión");
+		System.out.println("4 - Apostar en un sorteo");
+		System.out.println("5 - Cerrar sesión");
 	}
 
 	private void mostrarMenu() {
@@ -84,6 +86,10 @@ public class GamblingApp {
 				break;
 				
 			case 4:
+				apostarEnSorteo();
+				break;
+				
+			case 5:
 				cerrarSesion();
 				break;
 		}
@@ -222,6 +228,41 @@ public class GamblingApp {
 			for (Sorteo sorteo : sorteos) {
 				System.out.println(sorteo);
 				System.out.println();
+			}
+		}
+	}
+
+	private void apostarEnSorteo() throws Exception {
+		List<Sorteo> sorteos = null;
+
+		try {
+			sorteos = sorteoController.getSorteosAbiertos();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+			throw e;
+		}
+
+		if (sorteos.isEmpty()) {
+			System.out.println("No hay ningún sorteo activo.");
+		} else {
+			System.out.println("Selecciona el sorteo en el que quieres apostar:");
+			for (int i = 0; i < sorteos.size(); i++) {
+				System.out.println(i + " - " + sorteos);
+				System.out.println();
+			}
+			System.out.println("-1 - Ninguno");
+
+			int opcion = Integer.parseInt(teclado.nextLine());
+			if ((opcion >= 0) && (opcion < sorteos.size())) {
+				Sorteo sorteo = sorteos.get(opcion);
+				Apuesta apuesta = sorteo.generarApuesta(teclado, jugador.getId());
+
+				try {
+					apuestaController.insertApuesta(apuesta);
+				} catch (SQLException | ClassNotFoundException | IOException e) {
+					e.printStackTrace();
+					throw e;
+				}
 			}
 		}
 	}

@@ -2,6 +2,7 @@ package com.daw1.gambling.sorteo;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Scanner;
 
 import com.daw1.gambling.Apuesta;
 import com.daw1.gambling.enums.TipoSorteo;
@@ -88,7 +89,7 @@ public abstract class Sorteo {
 	 * 
 	 * @return Apuesta generada
 	 */
-	public abstract Apuesta generarApuesta();
+	public abstract Apuesta generarApuesta(Scanner teclado, long idJugador);
 
 	@Override
 	public String toString() {

@@ -2,6 +2,7 @@ package com.daw1.gambling.sorteo;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Scanner;
 
 import com.daw1.gambling.Apuesta;
 import com.daw1.gambling.enums.TipoSorteo;
@@ -47,7 +48,7 @@ public class SorteoPrimitiva extends Sorteo {
 	}
 
 	@Override
-	public Apuesta generarApuesta() {
+	public Apuesta generarApuesta(Scanner teclado, long idJugador) {
 		// TODO Auto-generated method stub
 		return null;
 	}
