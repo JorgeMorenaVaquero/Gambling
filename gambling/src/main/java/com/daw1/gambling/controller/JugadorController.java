@@ -13,8 +13,7 @@ import com.daw1.gambling.Jugador;
 
 public class JugadorController {
 
-	public Jugador getJugador(String correoElectronico, String contrasenna)
-			throws IOException, SQLException, ClassNotFoundException {
+	public Jugador getJugador(long idJugador) throws IOException, SQLException, ClassNotFoundException {
 		Connection connection = null;
 
 		try {
@@ -30,14 +29,13 @@ public class JugadorController {
 		ResultSet result = null;
 
 		try {
-			String sql = "SELECT id, dni, dinero, correo_electronico, contrasenna, telefono FROM jugador WHERE correo_electronico = ? AND contrasenna = ? LIMIT 1";
+			String sql = "SELECT id, dni, dinero, correo_electronico, contrasenna, telefono FROM jugador WHERE id = ?";
 			statement = connection.prepareStatement(sql);
-			statement.setString(1, correoElectronico);
-			statement.setString(2, contrasenna);
+			statement.setLong(1, idJugador);
 
 			result = statement.executeQuery();
 
-			while (result.next()) {
+			if (result.next()) {
 				long id = result.getLong("id");
 				String dni = result.getString("dni");
 				BigDecimal dinero = result.getBigDecimal("dinero");
