@@ -254,13 +254,18 @@ public class GamblingApp {
 			int opcion = Integer.parseInt(teclado.nextLine());
 			if ((opcion >= 0) && (opcion < sorteos.size())) {
 				Sorteo sorteo = sorteos.get(opcion);
-				Apuesta apuesta = sorteo.generarApuesta(teclado, jugador.getId());
 
-				try {
-					apuestaController.insertApuesta(apuesta);
-				} catch (SQLException | ClassNotFoundException | IOException e) {
-					e.printStackTrace();
-					throw e;
+				if (sorteo.tieneDineroSuficiente(jugador)) {
+					Apuesta apuesta = sorteo.generarApuesta(teclado, jugador.getId());
+
+					try {
+						apuestaController.insertApuesta(apuesta);
+
+						jugadorController.retirarSaldo(jugador, new BigDecimal(sorteo.getPrecio()));
+					} catch (SQLException | ClassNotFoundException | IOException e) {
+						e.printStackTrace();
+						throw e;
+					}
 				}
 			}
 		}
