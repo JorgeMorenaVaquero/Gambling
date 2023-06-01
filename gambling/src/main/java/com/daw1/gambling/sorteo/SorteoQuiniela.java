@@ -2,6 +2,7 @@ package com.daw1.gambling.sorteo;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import com.daw1.gambling.enums.TipoSorteo;
@@ -44,9 +45,43 @@ public class SorteoQuiniela extends Sorteo {
 	}
 
 	@Override
-	protected Resultado generarResultadoApuesta(Scanner teclado) {
-		// TODO Auto-generated method stub
-		return null;
+	protected Resultado generarResultadoApuesta(Scanner teclado) throws IllegalStateException, NoSuchElementException, NumberFormatException {
+		String equipo1, equipo2;
+		int bloque;
+		char apuesta;
+		
+		ResultadoQuiniela resultado = null;
+		try {
+			System.out.print("Introduzca el nombre del primer equipo: ");
+			equipo1 = teclado.nextLine().trim();
+			
+			System.out.print("Introduzca el nombre del segundo equipo: ");
+			equipo2 = teclado.nextLine().trim();
+			
+			System.out.print("Introduzca el bloque (entre 1 y 8): ");
+			bloque = Integer.parseInt(teclado.nextLine());
+			
+			while(bloque < 1 || bloque > 8) {
+				System.out.print("Número fuera de rango, introdúzca uno entre 1 y 8: ");
+				bloque = Integer.parseInt(teclado.nextLine());
+			}
+			
+			System.out.print("Introduzca la apuesta (1, X o 2): ");
+			apuesta = teclado.nextLine().charAt(0);
+			
+			while(apuesta != '1' || apuesta != 'X' || apuesta != '2') {
+				System.out.print("Apuesta inválida, introduzca una dentro del rango (1, X o 2): ");
+				apuesta = teclado.nextLine().charAt(0);
+			}
+			
+			resultado = new ResultadoQuiniela(equipo1, equipo2, bloque, apuesta);
+			
+		} catch (IllegalStateException | NoSuchElementException | NumberFormatException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+		return resultado;
 	}
 
 	@Override
