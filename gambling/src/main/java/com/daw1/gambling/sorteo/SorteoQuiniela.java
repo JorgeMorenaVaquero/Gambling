@@ -10,7 +10,9 @@ import com.daw1.gambling.resultado.Resultado;
 import com.daw1.gambling.resultado.ResultadoQuiniela;
 
 public class SorteoQuiniela extends Sorteo {
-
+	
+	private static final double QUINIELA_PRECIO = 0.75;
+	
 	/**
 	 * Constructor para un sorteo de quiniela con resultado
 	 * 
@@ -24,6 +26,7 @@ public class SorteoQuiniela extends Sorteo {
 			ResultadoQuiniela resultado) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.QUINIELA;
+		this.precio = QUINIELA_PRECIO;
 	}
 
 	/**
@@ -37,6 +40,7 @@ public class SorteoQuiniela extends Sorteo {
 	public SorteoQuiniela(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora) {
 		super(id, fechaApertura, fechaCierre, fechaHora);
 		this.tipo = TipoSorteo.QUINIELA;
+		this.precio = QUINIELA_PRECIO;
 	}
 
 	@Override

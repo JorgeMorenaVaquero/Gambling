@@ -10,6 +10,8 @@ import com.daw1.gambling.resultado.Resultado;
 import com.daw1.gambling.resultado.ResultadoLoteriaNacional;
 
 public class SorteoLoteriaNacional extends Sorteo {
+	
+	private static final double LOTERIA_NACIONAL_PRECIO = 3;
 
 	/**
 	 * Constructor para un sorteo de loteria nacional con resultado
@@ -24,6 +26,7 @@ public class SorteoLoteriaNacional extends Sorteo {
 			ResultadoLoteriaNacional resultado) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.LOTERIA_NACIONAL;
+		this.precio = LOTERIA_NACIONAL_PRECIO;
 	}
 
 	/**
@@ -37,6 +40,7 @@ public class SorteoLoteriaNacional extends Sorteo {
 	public SorteoLoteriaNacional(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora) {
 		super(id, fechaApertura, fechaCierre, fechaHora);
 		this.tipo = TipoSorteo.LOTERIA_NACIONAL;
+		this.precio = LOTERIA_NACIONAL_PRECIO;
 	}
 
 	@Override
