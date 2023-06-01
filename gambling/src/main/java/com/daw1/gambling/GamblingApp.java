@@ -122,7 +122,6 @@ public class GamblingApp {
 
 			if (idJugador > 0) {
 				jugador = jugadorController.getJugador(idJugador);
-				System.out.println(jugador);
 				System.out.println("Bienvenido de vuelta");
 			} else {
 				System.out.println("Correo electrónico y/o contraseña incorrecto");
