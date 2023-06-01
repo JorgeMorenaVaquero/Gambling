@@ -2,6 +2,7 @@ package com.daw1.gambling.sorteo;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import com.daw1.gambling.enums.TipoSorteo;
@@ -43,9 +44,37 @@ public class SorteoGordo extends Sorteo {
 	}
 
 	@Override
-	protected Resultado generarResultadoApuesta(Scanner teclado) {
-		// TODO Auto-generated method stub
-		return null;
+	protected Resultado generarResultadoApuesta(Scanner teclado) throws IllegalStateException, NoSuchElementException, NumberFormatException {
+		int[] combinacion = new int[5];
+		int numClave;
+		
+		ResultadoGordo resultado = null;
+		try {
+			for(int i = 0; i<combinacion.length; i++) {
+				System.out.print("Introduzca el número "+i+" de la combinación (entre 1 y 54): ");
+				combinacion[i] = Integer.parseInt(teclado.nextLine());
+				
+				while(combinacion[i] < 1 || combinacion[i] > 54) {
+					System.out.print("Número fuera de rango, introdúzca uno entre 1 y 54: ");
+					combinacion[i] = Integer.parseInt(teclado.nextLine());
+				}
+			}
+			System.out.print("Introduzca el Nº clave (entre 0 y 9): ");
+			numClave = Integer.parseInt(teclado.nextLine());
+			
+			while(numClave < 0 || numClave > 9) {
+				System.out.print("Número fuera de rango, introdúzca uno entre 0 y 9: ");
+				numClave = Integer.parseInt(teclado.nextLine());
+			}
+			
+			resultado = new ResultadoGordo(combinacion, numClave, 0);
+			
+		} catch (IllegalStateException | NoSuchElementException | NumberFormatException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+		return resultado;
 	}
 
 	@Override
