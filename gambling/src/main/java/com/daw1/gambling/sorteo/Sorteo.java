@@ -98,7 +98,7 @@ public abstract class Sorteo {
 	 */
 	public Apuesta generarApuesta(Scanner teclado, long idJugador) {
 		Resultado resultadoApuesta = generarResultadoApuesta(teclado);
-		return (new Apuesta(idJugador, idJugador, new Date(System.currentTimeMillis()), resultadoApuesta));
+		return (new Apuesta(idJugador, id, new Date(System.currentTimeMillis()), resultadoApuesta));
 	}
 
 	@Override
