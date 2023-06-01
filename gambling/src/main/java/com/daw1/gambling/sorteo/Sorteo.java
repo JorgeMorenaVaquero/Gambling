@@ -95,6 +95,5 @@ public abstract class Sorteo {
 		return "id=" + id + ", fechaApertura=" + fechaApertura + ", fechaCierre=" + fechaCierre + ", fechaHora="
 				+ fechaHora + ", tipo=" + tipo + ", resultado=" + resultado;
 	}
-	
-	
+
 }

@@ -5,10 +5,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ResultadoPrimitiva extends Resultado {
-	
+
 	private int[] combinacion;
 	private int reintegro;
-	
+
 	public ResultadoPrimitiva(
 		@JsonProperty("combinacion")
 		int[] combinacion, 
@@ -19,8 +19,6 @@ public class ResultadoPrimitiva extends Resultado {
 		this.combinacion = combinacion;
 		this.reintegro = reintegro;
 	}
-
-
 
 	@Override
 	public String toString() {

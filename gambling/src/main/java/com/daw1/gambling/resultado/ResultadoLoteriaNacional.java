@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultadoLoteriaNacional extends Resultado {
-	
+
 	private int numero;
 	private int euros;
 	private int serie;

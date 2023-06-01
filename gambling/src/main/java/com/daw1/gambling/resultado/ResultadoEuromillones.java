@@ -5,10 +5,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ResultadoEuromillones extends Resultado {
-	
+
 	private int[] combinacion;
 	private int[] estrellas;
-	
+
 	public ResultadoEuromillones(
 		@JsonProperty("combinacion")
 		int[] combinacion, 
@@ -20,14 +20,11 @@ public class ResultadoEuromillones extends Resultado {
 		this.estrellas = estrellas;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Resultado Euromillones:\n"
 				+ "combinacion {" + Arrays.toString(combinacion) + "},"
 				+ "estrellas {" + Arrays.toString(estrellas) + "}";
 	}
-	
-	
 
 }
