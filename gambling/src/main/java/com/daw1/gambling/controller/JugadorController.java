@@ -106,8 +106,7 @@ public class JugadorController {
 		}
 	}
 
-	public void retirarSaldo(Jugador jugador, BigDecimal saldo)
-			throws ClassNotFoundException, IOException, SQLException {
+	public void retirarSaldo(Jugador jugador, BigDecimal cantidad) throws ClassNotFoundException, IOException, SQLException {
 		Connection connection = null;
 
 		try {
@@ -119,14 +118,14 @@ public class JugadorController {
 
 		PreparedStatement statement = null;
 		try {
-			String sql = "UPDATE jugador SET dinero=dinero-? WHERE id=?";
-			statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			String sql = "UPDATE jugador SET dinero = (dinero - ?) WHERE id = ?";
+			statement = connection.prepareStatement(sql);
 
-			statement.setBigDecimal(1, saldo);
+			statement.setBigDecimal(1, cantidad);
 			statement.setLong(2, jugador.getId());
 
 			if (statement.executeUpdate() > 0) {
-				jugador.setDinero(jugador.getDinero().subtract(saldo));
+				jugador.setDinero(jugador.getDinero().subtract(cantidad));
 			}
 
 			connection.commit();
