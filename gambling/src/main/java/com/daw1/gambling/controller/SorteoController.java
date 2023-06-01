@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SorteoController {
 
-	public List<Sorteo> getSorteos() throws IOException, SQLException, ClassNotFoundException, Exception {
+	public List<Sorteo> getSorteosAbiertos() throws IOException, SQLException, ClassNotFoundException, Exception {
 		List<Sorteo> sorteos = new ArrayList<>();
 
 		Connection connection = null;
@@ -37,7 +37,7 @@ public class SorteoController {
 
 		try {
 			statement = connection.createStatement();
-			String sql = "SELECT id, fecha_apertura, fecha_cierre, fecha_hora, tipo, resultado FROM sorteo";
+			String sql = "SELECT id, fecha_apertura, fecha_cierre, fecha_hora, tipo, resultado FROM sorteo WHERE fecha_cierre <= (CURRENT_DATE)";
 			result = statement.executeQuery(sql);
 
 			while (result.next()) {
