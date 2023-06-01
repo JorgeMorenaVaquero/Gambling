@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultadoLoteriaNacional extends Resultado {
+	
+	public static final int MAXIMO_NUMERO = 99999;
+	public static final int MAXIMO_EUROS = 999999;
+	public static final int MAXIMO_SERIE = 999;
+	public static final int MAXIMO_FRACCION = 99;
 
 	private int numero;
 	private int euros;
