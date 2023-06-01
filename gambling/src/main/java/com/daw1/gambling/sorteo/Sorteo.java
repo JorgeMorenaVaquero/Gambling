@@ -85,16 +85,31 @@ public abstract class Sorteo {
 	public abstract void generarResultado();
 
 	/**
+	 * Generar resultado de la apuesta del jugador
+	 * @param teclado
+	 * @return
+	 */
+	protected abstract Resultado generarResultadoApuesta(Scanner teclado);
+
+	/**
 	 * Método para generar una apuesta
 	 * 
 	 * @return Apuesta generada
 	 */
-	public abstract Apuesta generarApuesta(Scanner teclado, long idJugador);
+	public Apuesta generarApuesta(Scanner teclado, long idJugador) {
+		Resultado resultadoApuesta = generarResultadoApuesta(teclado);
+		return (new Apuesta(idJugador, idJugador, new Date(System.currentTimeMillis()), resultadoApuesta));
+	}
 
 	@Override
 	public String toString() {
 		return "id=" + id + ", fechaApertura=" + fechaApertura + ", fechaCierre=" + fechaCierre + ", fechaHora="
 				+ fechaHora + ", tipo=" + tipo + ", resultado=" + resultado;
+	}
+
+	protected Resultado generarResultadoApuesta() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

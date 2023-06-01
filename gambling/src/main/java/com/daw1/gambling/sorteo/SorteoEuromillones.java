@@ -4,8 +4,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Scanner;
 
-import com.daw1.gambling.Apuesta;
 import com.daw1.gambling.enums.TipoSorteo;
+import com.daw1.gambling.resultado.Resultado;
 import com.daw1.gambling.resultado.ResultadoEuromillones;
 
 public class SorteoEuromillones extends Sorteo {
@@ -38,14 +38,14 @@ public class SorteoEuromillones extends Sorteo {
 		super(id, fechaApertura, fechaCierre, fechaHora);
 		this.tipo = TipoSorteo.EUROMILLONES;
 	}
-
+	
 	@Override
 	public void generarResultado() {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public Apuesta generarApuesta(Scanner teclado, long idJugador) {
+	protected Resultado generarResultadoApuesta(Scanner teclado) {
 		// TODO Auto-generated method stub
 		return null;
 	}

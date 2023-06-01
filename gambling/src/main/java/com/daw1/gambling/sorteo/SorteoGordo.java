@@ -4,8 +4,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Scanner;
 
-import com.daw1.gambling.Apuesta;
 import com.daw1.gambling.enums.TipoSorteo;
+import com.daw1.gambling.resultado.Resultado;
 import com.daw1.gambling.resultado.ResultadoGordo;
 
 public class SorteoGordo extends Sorteo {
@@ -40,11 +40,10 @@ public class SorteoGordo extends Sorteo {
 	@Override
 	public void generarResultado() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
-	public Apuesta generarApuesta(Scanner teclado, long idJugador) {
+	protected Resultado generarResultadoApuesta(Scanner teclado) {
 		// TODO Auto-generated method stub
 		return null;
 	}
