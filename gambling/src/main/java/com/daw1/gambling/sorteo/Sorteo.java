@@ -1,10 +1,12 @@
 package com.daw1.gambling.sorteo;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Scanner;
 
 import com.daw1.gambling.Apuesta;
+import com.daw1.gambling.Jugador;
 import com.daw1.gambling.enums.TipoSorteo;
 import com.daw1.gambling.resultado.Resultado;
 
@@ -75,6 +77,10 @@ public abstract class Sorteo {
 	public Resultado getResultado() {
 		return resultado;
 	}
+	
+	public double getPrecio() {
+		return precio;
+	}
 
 	public void setId(long id) {
 		this.id = id;
@@ -102,15 +108,13 @@ public abstract class Sorteo {
 		return (new Apuesta(idJugador, id, new Date(System.currentTimeMillis()), resultadoApuesta));
 	}
 
+	public boolean tieneDineroSuficiente(Jugador jugador) {
+		return (jugador.getDinero().compareTo(BigDecimal.valueOf(this.precio)) != -1);
+	}
+	
 	@Override
 	public String toString() {
 		return "id=" + id + ", fechaApertura=" + fechaApertura + ", fechaCierre=" + fechaCierre + ", fechaHora="
 				+ fechaHora + ", tipo=" + tipo + ", resultado=" + resultado;
 	}
-
-	protected Resultado generarResultadoApuesta() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
