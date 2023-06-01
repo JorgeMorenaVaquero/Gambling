@@ -35,3 +35,5 @@ CREATE TABLE apuesta (
   FOREIGN KEY (id_jugador) REFERENCES jugador (id),
   FOREIGN KEY (id_sorteo) REFERENCES sorteo (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE INDEX index_jugador_fecha_apuesta ON apuesta (id_jugador, fecha_apuesta DESC);

@@ -36,7 +36,7 @@ public class ApuestaController {
 		ResultSet result = null;
 
 		try {
-			String sql = "SELECT a.id_sorteo, a.fecha_apuesta, a.estado, a.premio, a.apuesta, s.tipo FROM apuesta a INNER JOIN sorteo s ON (a.id_sorteo = s.id) WHERE id_jugador = ?";
+			String sql = "SELECT a.id_sorteo, a.fecha_apuesta, a.estado, a.premio, a.apuesta, s.tipo FROM apuesta a INNER JOIN sorteo s ON (a.id_sorteo = s.id) WHERE id_jugador = ? ORDER BY a.fecha_apuesta DESC";
 			statement = connection.prepareStatement(sql);
 			statement.setLong(1, idJugador);
 
