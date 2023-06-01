@@ -6,12 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ResultadoEuromillones extends Resultado {
 
+	@JsonProperty("combinacion")
 	private int[] combinacion;
+	@JsonProperty("estrellas")
 	private int[] estrellas;
 
 	public ResultadoEuromillones(
 		@JsonProperty("combinacion")
-		int[] combinacion, 
+		int[] combinacion,
 		@JsonProperty("estrellas")
 		int[] estrellas
 	) {

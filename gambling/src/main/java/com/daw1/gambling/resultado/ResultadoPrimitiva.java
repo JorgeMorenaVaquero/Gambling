@@ -6,12 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ResultadoPrimitiva extends Resultado {
 
+	@JsonProperty("combinacion")
 	private int[] combinacion;
+	@JsonProperty("reintegro")
 	private int reintegro;
 
 	public ResultadoPrimitiva(
 		@JsonProperty("combinacion")
-		int[] combinacion, 
+		int[] combinacion,
 		@JsonProperty("reintegro")
 		int reintegro
 	) {

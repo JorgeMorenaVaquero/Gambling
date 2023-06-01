@@ -1,9 +1,7 @@
 package com.daw1.gambling.resultado;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultadoLoteriaNacional extends Resultado {
 	
 	public static final int MAXIMO_NUMERO = 99999;
@@ -11,9 +9,13 @@ public class ResultadoLoteriaNacional extends Resultado {
 	public static final int MAXIMO_SERIE = 999;
 	public static final int MAXIMO_FRACCION = 99;
 
+	@JsonProperty("numero")
 	private int numero;
+	@JsonProperty("euros")
 	private int euros;
+	@JsonProperty("serie")
 	private int serie;
+	@JsonProperty("fraccion")
 	private int fraccion;
 
 	public ResultadoLoteriaNacional(

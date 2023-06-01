@@ -251,6 +251,7 @@ public class GamblingApp {
 			}
 			System.out.println("-1 - Ninguno");
 
+			System.out.print("Sorteo: ");
 			int opcion = Integer.parseInt(teclado.nextLine());
 			if ((opcion >= 0) && (opcion < sorteos.size())) {
 				Sorteo sorteo = sorteos.get(opcion);
