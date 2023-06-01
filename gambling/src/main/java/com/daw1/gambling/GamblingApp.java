@@ -18,7 +18,7 @@ public class GamblingApp {
 	private SorteoController sorteoController;
 	private ApuestaController apuestaController;
 
-	private AutentificacionService service;
+	private AutentificacionService outService;
 
 	private Jugador jugador;
 
@@ -28,6 +28,7 @@ public class GamblingApp {
 		this.jugadorController = new JugadorController();
 		this.sorteoController = new SorteoController();
 		this.apuestaController = new ApuestaController();
+		this.outService = new AutentificacionService();
 	}
 
 	private void mostrarMenuNoRegistrado() {
@@ -68,7 +69,7 @@ public class GamblingApp {
 		jugador = new Jugador(dni, dinero, correoElectronico, contrasenna, telefono);
 
 		try {
-			if (service.puedeRegistrarse(jugador)) {
+			if (outService.puedeRegistrarse(jugador)) {
 				jugadorController.insertJugador(jugador);
 			}
 		} catch (ClassNotFoundException | SQLException | IOException e) {
