@@ -47,11 +47,14 @@ public class GamblingApp {
 	}
 
 	private void mostrarMenu() {
+		System.out.println("------ Menú ------");
 		if (jugador == null) {
 			mostrarMenuNoRegistrado();
 		} else {
 			mostrarMenuRegistrado();
 		}
+		System.out.println("-1 - Finalizar");
+		System.out.println("------------------");
 	}
 
 	private void seleccionarOpcionNoRegistrado(int opcion) throws Exception {
@@ -233,7 +236,6 @@ public class GamblingApp {
 
 		while (!finalizado) {
 			mostrarMenu();
-			System.out.println("Introduce -1 para finalizar");
 
 			System.out.print("Opción: ");
 			int opcion = Integer.parseInt(teclado.nextLine());
@@ -241,10 +243,11 @@ public class GamblingApp {
 			if (opcion == -1) {
 				finalizado = true;
 			} else {
+				System.out.println();
 				seleccionarOpcion(opcion);
 			}
 			
-			System.out.println();
+			System.out.println("\n");
 		}
 	}
 
