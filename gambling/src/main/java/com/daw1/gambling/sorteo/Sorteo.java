@@ -9,13 +9,14 @@ import com.daw1.gambling.enums.TipoSorteo;
 import com.daw1.gambling.resultado.Resultado;
 
 public abstract class Sorteo {
-
+	
 	protected long id;
 	protected Date fechaApertura;
 	protected Date fechaCierre;
 	protected Timestamp fechaHora;
 	protected TipoSorteo tipo;
 	protected Resultado resultado;
+	protected double precio;
 
 	/**
 	 * Constructor para un sorteo con resultado

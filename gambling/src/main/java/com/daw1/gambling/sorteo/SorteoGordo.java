@@ -10,7 +10,10 @@ import com.daw1.gambling.resultado.Resultado;
 import com.daw1.gambling.resultado.ResultadoGordo;
 
 public class SorteoGordo extends Sorteo {
-
+	
+	private final static int COMBINACION = 5;
+	private final static double GORDO_PRECIO = 1.5;
+	
 	/**
 	 * Constructor para un sorteo de el Gordo con resultado
 	 * 
@@ -23,6 +26,7 @@ public class SorteoGordo extends Sorteo {
 	public SorteoGordo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora, ResultadoGordo resultado) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.GORDO;
+		this.precio = GORDO_PRECIO;
 	}
 
 	/**
@@ -36,6 +40,7 @@ public class SorteoGordo extends Sorteo {
 	public SorteoGordo(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora) {
 		super(id, fechaApertura, fechaCierre, fechaHora);
 		this.tipo = TipoSorteo.GORDO;
+		this.precio = GORDO_PRECIO;
 	}
 
 	@Override
@@ -45,12 +50,12 @@ public class SorteoGordo extends Sorteo {
 
 	@Override
 	protected Resultado generarResultadoApuesta(Scanner teclado) throws IllegalStateException, NoSuchElementException, NumberFormatException {
-		int[] combinacion = new int[5];
+		int[] combinacion = new int[COMBINACION];
 		int numClave;
 		
 		ResultadoGordo resultado = null;
 		try {
-			for(int i = 0; i<combinacion.length; i++) {
+			for(int i = 0; i<COMBINACION; i++) {
 				System.out.print("Introduzca el número "+i+" de la combinación (entre 1 y 54): ");
 				combinacion[i] = Integer.parseInt(teclado.nextLine());
 				

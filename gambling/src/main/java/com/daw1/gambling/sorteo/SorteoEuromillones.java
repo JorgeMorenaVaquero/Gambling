@@ -13,6 +13,8 @@ public class SorteoEuromillones extends Sorteo {
 	private static final int COMBINACION = 6;
 	private static final int ESTRELLAS = 2;
 	
+	private static final double EUROMILLONES_PRECIO = 2.5;
+	
 	/**
 	 * Constructor de un sorteo de euromillones con resultado
 	 * 
@@ -26,6 +28,7 @@ public class SorteoEuromillones extends Sorteo {
 			ResultadoEuromillones resultado) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.EUROMILLONES;
+		this.precio = EUROMILLONES_PRECIO;
 	}
 
 	/**
@@ -40,6 +43,7 @@ public class SorteoEuromillones extends Sorteo {
 	public SorteoEuromillones(long id, Date fechaApertura, Date fechaCierre, Timestamp fechaHora) {
 		super(id, fechaApertura, fechaCierre, fechaHora);
 		this.tipo = TipoSorteo.EUROMILLONES;
+		this.precio = EUROMILLONES_PRECIO;
 	}
 	
 	@Override

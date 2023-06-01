@@ -10,7 +10,10 @@ import com.daw1.gambling.resultado.Resultado;
 import com.daw1.gambling.resultado.ResultadoPrimitiva;
 
 public class SorteoPrimitiva extends Sorteo {
-
+	
+	private final static int COMBINACION = 6;
+	private final static double PRIMITIVA_PRECIO = 2;
+		
 	/**
 	 * Constructor para un sorteo de primitiva con resultado
 	 * 
@@ -25,6 +28,7 @@ public class SorteoPrimitiva extends Sorteo {
 			ResultadoPrimitiva resultado) {
 		super(id, fechaApertura, fechaCierre, fechaHora, resultado);
 		this.tipo = TipoSorteo.PRIMITIVA;
+		this.precio = PRIMITIVA_PRECIO;
 	}
 
 	/**
@@ -41,6 +45,7 @@ public class SorteoPrimitiva extends Sorteo {
 			int reintegro) {
 		super(id, fechaApertura, fechaCierre, fechaHora);
 		this.tipo = TipoSorteo.PRIMITIVA;
+		this.precio = PRIMITIVA_PRECIO;
 	}
 
 	@Override
@@ -50,12 +55,12 @@ public class SorteoPrimitiva extends Sorteo {
 
 	@Override
 	protected Resultado generarResultadoApuesta(Scanner teclado) throws IllegalStateException, NoSuchElementException, NumberFormatException {
-		int[] combinacion = new int[6];
+		int[] combinacion = new int[COMBINACION];
 		int reintegro;
 		
 		ResultadoPrimitiva resultado = null;
 		try {
-			for(int i = 0; i<combinacion.length; i++) {
+			for(int i = 0; i<COMBINACION; i++) {
 				System.out.print("Introduzca el número "+i+" de la combinación (entre 1 y 49): ");
 				combinacion[i] = Integer.parseInt(teclado.nextLine());
 				
