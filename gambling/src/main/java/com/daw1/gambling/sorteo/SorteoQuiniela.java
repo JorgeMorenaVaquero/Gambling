@@ -47,7 +47,6 @@ public class SorteoQuiniela extends Sorteo {
 	@Override
 	protected Resultado generarResultadoApuesta(Scanner teclado) throws IllegalStateException, NoSuchElementException, NumberFormatException {
 		String equipo1, equipo2;
-		int bloque;
 		char apuesta;
 		
 		ResultadoQuiniela resultado = null;
@@ -58,14 +57,6 @@ public class SorteoQuiniela extends Sorteo {
 			System.out.print("Introduzca el nombre del segundo equipo: ");
 			equipo2 = teclado.nextLine().trim();
 			
-			System.out.print("Introduzca el bloque (entre 1 y 8): ");
-			bloque = Integer.parseInt(teclado.nextLine());
-			
-			while(bloque < 1 || bloque > 8) {
-				System.out.print("Número fuera de rango, introdúzca uno entre 1 y 8: ");
-				bloque = Integer.parseInt(teclado.nextLine());
-			}
-			
 			System.out.print("Introduzca la apuesta (1, X o 2): ");
 			apuesta = teclado.nextLine().charAt(0);
 			
@@ -74,7 +65,7 @@ public class SorteoQuiniela extends Sorteo {
 				apuesta = teclado.nextLine().charAt(0);
 			}
 			
-			resultado = new ResultadoQuiniela(equipo1, equipo2, bloque, apuesta);
+			resultado = new ResultadoQuiniela(equipo1, equipo2, apuesta);
 			
 		} catch (IllegalStateException | NoSuchElementException | NumberFormatException e) {
 			e.printStackTrace();
