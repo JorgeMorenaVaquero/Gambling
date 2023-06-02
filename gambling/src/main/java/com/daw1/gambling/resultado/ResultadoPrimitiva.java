@@ -24,7 +24,7 @@ public class ResultadoPrimitiva extends Resultado {
 
 	@Override
 	public String toString() {
-		return "Resultado Euromillones:\n"
+		return "Resultado Primitiva:\n"
 				+ "combinacion {" + Arrays.toString(combinacion) + "},"
 				+ "reintegro {" + reintegro + "}";
 	}

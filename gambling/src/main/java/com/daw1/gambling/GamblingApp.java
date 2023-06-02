@@ -202,10 +202,9 @@ public class GamblingApp {
 		if (apuestas.isEmpty()) {
 			System.out.println("No has realizado ninguna apuesta.");
 		} else {
-			System.out.println("Apuestas realizadas:");
+			System.out.println("----- Apuestas realizadas -----");
 			for (Apuesta apuesta : apuestas) {
 				System.out.println(apuesta);
-				System.out.println();
 			}
 		}
 	}
@@ -223,7 +222,7 @@ public class GamblingApp {
 		if (sorteos.isEmpty()) {
 			System.out.println("No hay ningún sorteo activo.");
 		} else {
-			System.out.println("Sorteos activos:\n");
+			System.out.println("----- Sorteos activos -----");
 			for (Sorteo sorteo : sorteos) {
 				System.out.println(sorteo);
 			}
@@ -249,7 +248,7 @@ public class GamblingApp {
 			}
 			System.out.println("-1 - Ninguno");
 
-			System.out.print("Sorteo: ");
+			System.out.print("----- Sorteo -----");
 			int opcion = Integer.parseInt(teclado.nextLine());
 			if ((opcion >= 0) && (opcion < sorteos.size())) {
 				Sorteo sorteo = sorteos.get(opcion);
