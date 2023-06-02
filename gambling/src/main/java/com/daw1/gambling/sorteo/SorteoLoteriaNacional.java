@@ -42,11 +42,6 @@ public class SorteoLoteriaNacional extends Sorteo {
 		this.tipo = TipoSorteo.LOTERIA_NACIONAL;
 		this.precio = LOTERIA_NACIONAL_PRECIO;
 	}
-
-	@Override
-	public void generarResultado() {
-		// TODO Auto-generated method stub
-	}
 	
 	private int pedirNumeroCifras(Scanner teclado, int maximo) throws IllegalStateException, NoSuchElementException, NumberFormatException {
 		int numero = 0;

@@ -87,11 +87,6 @@ public abstract class Sorteo {
 	}
 
 	/**
-	 * Metodo para generar el resultado del sorteo
-	 */
-	public abstract void generarResultado();
-
-	/**
 	 * Generar resultado de la apuesta del jugador
 	 * @param teclado
 	 * @return

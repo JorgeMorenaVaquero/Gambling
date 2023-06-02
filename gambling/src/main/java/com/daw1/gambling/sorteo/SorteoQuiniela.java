@@ -44,11 +44,6 @@ public class SorteoQuiniela extends Sorteo {
 	}
 
 	@Override
-	public void generarResultado() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	protected Resultado generarResultadoApuesta(Scanner teclado) throws IllegalStateException, NoSuchElementException, NumberFormatException {
 		String equipo1, equipo2;
 		char apuesta;

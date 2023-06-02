@@ -46,11 +46,6 @@ public class SorteoEuromillones extends Sorteo {
 		this.tipo = TipoSorteo.EUROMILLONES;
 		this.precio = EUROMILLONES_PRECIO;
 	}
-	
-	@Override
-	public void generarResultado() {
-		// TODO Auto-generated method stub
-	}
 
 	@Override
 	protected Resultado generarResultadoApuesta(Scanner teclado) throws IllegalStateException, NoSuchElementException, NumberFormatException {

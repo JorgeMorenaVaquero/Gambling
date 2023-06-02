@@ -44,11 +44,6 @@ public class SorteoGordo extends Sorteo {
 	}
 
 	@Override
-	public void generarResultado() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	protected Resultado generarResultadoApuesta(Scanner teclado) throws IllegalStateException, NoSuchElementException, NumberFormatException {
 		int[] combinacion = new int[COMBINACION];
 		int numClave;
