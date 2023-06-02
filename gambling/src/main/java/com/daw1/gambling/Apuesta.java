@@ -80,7 +80,7 @@ public class Apuesta {
 	@Override
 	public String toString() {
 		return "Apuesta {Fecha de apuesta: " + fechaApuesta
-				+ ", Resultado: " + resultado + ", Estado: " + estado + ", Premio: " + premio + "}";
+				+ ", " + resultado + ", Estado: " + estado + ", Premio: " + premio + "}";
 	}
 
 }
