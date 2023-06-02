@@ -1,0 +1,13 @@
+USE gambling;
+
+INSERT INTO sorteo (fecha_apertura, fecha_cierre, tipo)
+  VALUES ('2023-06-01', '2024-01-01', 'LOTERIA_NACIONAL'),
+  ('2023-02-01', '2024-06-01', 'LOTERIA_NACIONAL'),
+  ('2023-03-01', '2024-06-01', 'QUINIELA'),
+  ('2023-04-01', '2024-06-01', 'QUINIELA'),
+  ('2023-05-01', '2024-06-01', 'EUROMILLONES'),
+  ('2023-06-01', '2024-06-01', 'EUROMILLONES'),
+  ('2023-07-01', '2024-06-01', 'PRIMITIVA'),
+  ('2023-08-01', '2024-06-01', 'PRIMITIVA'),
+  ('2023-09-01', '2024-06-01', 'GORDO'),
+  ('2023-10-01', '2024-06-01', 'GORDO');
