@@ -242,13 +242,13 @@ public class GamblingApp {
 		if (sorteos.isEmpty()) {
 			System.out.println("No hay ningún sorteo activo.");
 		} else {
-			System.out.println("Selecciona el sorteo en el que quieres apostar:");
+			System.out.println("----- Selecciona el sorteo en el que quieres apostar -----");
 			for (int i = 0; i < sorteos.size(); i++) {
-				System.out.println(i + " - " + sorteos.get(i));
+				System.out.println(i + " - " + sorteos.get(i).getPrecio() + "€ - " + sorteos.get(i));
 			}
 			System.out.println("-1 - Ninguno");
 
-			System.out.print("----- Sorteo -----");
+			System.out.print("Sorteo: ");
 			int opcion = Integer.parseInt(teclado.nextLine());
 			if ((opcion >= 0) && (opcion < sorteos.size())) {
 				Sorteo sorteo = sorteos.get(opcion);
@@ -265,6 +265,8 @@ public class GamblingApp {
 						throw e;
 					}
 				}
+			} else {
+				System.out.println("No tienes dinero suficiente");
 			}
 		}
 	}
