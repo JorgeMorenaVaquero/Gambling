@@ -233,7 +233,7 @@ public class GamblingApp {
 		List<Sorteo> sorteos = null;
 
 		try {
-			sorteos = sorteoController.getSorteosAbiertos();
+			sorteos = sorteoController.getSorteosDisponiblesJugador(jugador.getId());
 		} catch (ClassNotFoundException | SQLException | IOException e) {
 			e.printStackTrace();
 			throw e;
@@ -264,9 +264,9 @@ public class GamblingApp {
 						e.printStackTrace();
 						throw e;
 					}
+				} else {
+					System.out.println("No tienes dinero suficiente");
 				}
-			} else {
-				System.out.println("No tienes dinero suficiente");
 			}
 		}
 	}

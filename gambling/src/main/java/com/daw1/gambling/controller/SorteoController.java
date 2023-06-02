@@ -72,6 +72,60 @@ public class SorteoController {
 		return sorteos;
 	}
 
+	public List<Sorteo> getSorteosDisponiblesJugador(long idJugador) throws IOException, SQLException, ClassNotFoundException, Exception {
+		List<Sorteo> sorteos = new ArrayList<>();
+
+		Connection connection = null;
+		
+		try {
+			connection = ConexionBaseDeDatos.getConexion();
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			e.printStackTrace();
+			throw e;
+		}
+
+		PreparedStatement statement = null;
+		ResultSet result = null;
+
+		try {
+			String sql = "SELECT id, fecha_apertura, fecha_cierre, fecha_hora, tipo, resultado FROM sorteo WHERE fecha_apertura <= (CURRENT_DATE) AND fecha_cierre >= (CURRENT_DATE) AND id NOT IN (SELECT id_sorteo FROM apuesta WHERE id_jugador = ?)";
+			statement = connection.prepareStatement(sql);
+			statement.setLong(1, idJugador);
+			
+			result = statement.executeQuery();
+
+			while (result.next()) {
+				long id = result.getLong("id");
+				Date fechaApertura = result.getDate("fecha_apertura");
+				Date fechaCierre = result.getDate("fecha_cierre");
+				Timestamp fechaHora = result.getTimestamp("fecha_hora");
+				TipoSorteo tipo = TipoSorteo.valueOf(result.getString("tipo"));
+				String resultadoJson = result.getString("resultado");
+				Resultado resultado = null;
+				if (resultadoJson != null) {
+					resultado = (Resultado) new ObjectMapper().readValue(resultadoJson, tipo.getClaseResultado());
+				} 
+
+				Constructor<?> constructor = tipo.getClaseSorteo().getConstructor(long.class, Date.class, Date.class, Timestamp.class, tipo.getClaseResultado());
+				Sorteo sorteo = (Sorteo) constructor.newInstance(id, fechaApertura, fechaCierre, fechaHora, resultado);
+				
+				sorteos.add(sorteo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if (result == null || !result.isClosed()) {
+				result.close();
+			}
+			if (statement == null || !statement.isClosed()) {
+				statement.close();
+			}
+		}
+		
+		return sorteos;
+	}
+
 	public void insertSorteo(Sorteo sorteo) throws IOException, SQLException, ClassNotFoundException {
 		Connection connection = null;
 		
