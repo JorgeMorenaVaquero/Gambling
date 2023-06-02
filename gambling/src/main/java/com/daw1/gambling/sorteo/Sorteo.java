@@ -109,7 +109,7 @@ public abstract class Sorteo {
 	
 	@Override
 	public String toString() {
-		return "id: " + id + ", Fecha de apertura: " + fechaApertura + ", Fecha de cierre: " + fechaCierre + ", Fecha y hora de celebración: "
-				+ fechaHora + ", Tipo de sorteo: " + tipo + ", Resultado: " + resultado;
+		return "Fecha de apertura: " + fechaApertura + ", Fecha de cierre: " + ((fechaCierre != null) ? fechaCierre : "N/A") + ", Fecha y hora de celebración: "
+				+ ((fechaHora != null) ? fechaHora : "N/A") + ", Resultado: " + ((resultado != null) ? resultado : "N/A");
 	}
 }

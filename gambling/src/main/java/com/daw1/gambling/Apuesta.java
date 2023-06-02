@@ -79,8 +79,8 @@ public class Apuesta {
 
 	@Override
 	public String toString() {
-		return "Apuesta { idJugador: " + idJugador + ", idSorteo: " + idSorteo + ", Fecha de apuesta: " + fechaApuesta
-				+ ", Estado: " + estado + ", Premio: " + premio + ", Resultado: " + resultado + "}";
+		return "Apuesta {Fecha de apuesta: " + fechaApuesta
+				+ ", Resultado: " + resultado + ", Estado: " + estado + ", Premio: " + premio + "}";
 	}
 
 }
