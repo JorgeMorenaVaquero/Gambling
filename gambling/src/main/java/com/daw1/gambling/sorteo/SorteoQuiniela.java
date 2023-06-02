@@ -59,7 +59,7 @@ public class SorteoQuiniela extends Sorteo {
 			System.out.print("Introduzca la apuesta (1, X o 2): ");
 			apuesta = teclado.nextLine().charAt(0);
 			
-			while(apuesta != '1' || apuesta != 'X' || apuesta != '2') {
+			while(apuesta != '1' && apuesta != 'X' && apuesta != '2') {
 				System.out.print("Apuesta inválida, introduzca una dentro del rango (1, X o 2): ");
 				apuesta = teclado.nextLine().charAt(0);
 			}
