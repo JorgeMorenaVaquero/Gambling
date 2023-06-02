@@ -37,7 +37,7 @@ public class SorteoController {
 
 		try {
 			statement = connection.createStatement();
-			String sql = "SELECT id, fecha_apertura, fecha_cierre, fecha_hora, tipo, resultado FROM sorteo WHERE fecha_cierre <= (CURRENT_DATE)";
+			String sql = "SELECT id, fecha_apertura, fecha_cierre, fecha_hora, tipo, resultado FROM sorteo WHERE fecha_apertura <= (CURRENT_DATE) AND fecha_cierre >= (CURRENT_DATE)";
 			result = statement.executeQuery(sql);
 
 			while (result.next()) {
