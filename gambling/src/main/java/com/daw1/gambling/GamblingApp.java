@@ -223,10 +223,9 @@ public class GamblingApp {
 		if (sorteos.isEmpty()) {
 			System.out.println("No hay ningún sorteo activo.");
 		} else {
-			System.out.println("Sorteos activos:");
+			System.out.println("Sorteos activos:\n");
 			for (Sorteo sorteo : sorteos) {
 				System.out.println(sorteo);
-				System.out.println();
 			}
 		}
 	}
@@ -246,8 +245,7 @@ public class GamblingApp {
 		} else {
 			System.out.println("Selecciona el sorteo en el que quieres apostar:");
 			for (int i = 0; i < sorteos.size(); i++) {
-				System.out.println(i + " - " + sorteos);
-				System.out.println();
+				System.out.println(i + " - " + sorteos.get(i));
 			}
 			System.out.println("-1 - Ninguno");
 
@@ -282,20 +280,20 @@ public class GamblingApp {
 			teclado = new Scanner(System.in);
 
 			boolean finalizado = false;
-	
+
 			while (!finalizado) {
 				mostrarMenu();
-	
+
 				System.out.print("Opción: ");
 				int opcion = Integer.parseInt(teclado.nextLine());
-	
+
 				if (opcion == -1) {
 					finalizado = true;
 				} else {
 					System.out.println();
 					seleccionarOpcion(opcion);
 				}
-				
+
 				System.out.println("\n");
 			}
 		} catch (Exception e) {
