@@ -67,7 +67,7 @@ public class SorteoEuromillones extends Sorteo {
 				}
 			}
 			
-			for(int i = 0; i<COMBINACION; i++) {
+			for(int i = 0; i<ESTRELLAS; i++) {
 				System.out.print("Introduzca el número "+i+" de las estrellas (entre 1 y 12): ");
 				estrellas[i] = Integer.parseInt(teclado.nextLine());
 				
