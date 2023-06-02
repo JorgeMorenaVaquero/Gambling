@@ -89,7 +89,7 @@ public class SorteoPrimitiva extends Sorteo {
 
 	@Override
 	public String toString() {
-		return "SorteoPrimitiva [" + super.toString() + "]";
+		return "SorteoPrimitiva {" + super.toString() + "}";
 	}
 
 }

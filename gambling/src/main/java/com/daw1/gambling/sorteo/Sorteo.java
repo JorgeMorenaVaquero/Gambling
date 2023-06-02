@@ -114,7 +114,7 @@ public abstract class Sorteo {
 	
 	@Override
 	public String toString() {
-		return "id=" + id + ", fechaApertura=" + fechaApertura + ", fechaCierre=" + fechaCierre + ", fechaHora="
-				+ fechaHora + ", tipo=" + tipo + ", resultado=" + resultado;
+		return "id: " + id + ", fechaApertura: " + fechaApertura + ", fechaCierre: " + fechaCierre + ", fechaHora: "
+				+ fechaHora + ", tipo: " + tipo + ", resultado: " + resultado;
 	}
 }

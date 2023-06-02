@@ -81,7 +81,7 @@ public class SorteoQuiniela extends Sorteo {
 
 	@Override
 	public String toString() {
-		return "SorteoQuiniela [" + super.toString() + "]";
+		return "SorteoQuiniela {" + super.toString() + "}";
 	}
 
 }

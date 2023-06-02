@@ -2,6 +2,7 @@ package com.daw1.gambling.sorteo;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import com.daw1.gambling.enums.TipoSorteo;
@@ -52,65 +53,47 @@ public class SorteoEuromillones extends Sorteo {
 	}
 
 	@Override
-	protected Resultado generarResultadoApuesta(Scanner teclado) {
+	protected Resultado generarResultadoApuesta(Scanner teclado) throws IllegalStateException, NoSuchElementException, NumberFormatException {
 		
 		int[] combinacion = new int[COMBINACION];
 		int[] estrellas = new int[ESTRELLAS];
 		
-		System.out.println("Introduzca una combinacion de seis numeros entre 1 y 50 cada uno: ");
+		ResultadoEuromillones euromillones = null;
 		
-		for (int i = 0; i < COMBINACION; i++) {
-			System.out.print("Numero "+(i+1)+": ");
-			combinacion[i] = numeroCorrectoCombinacion(teclado);
+		try {
+			
+			for(int i = 0; i<COMBINACION; i++) {
+				System.out.print("Introduzca el número "+i+" de la combinación (entre 1 y 50): ");
+				combinacion[i] = Integer.parseInt(teclado.nextLine());
+				
+				while(combinacion[i] < 1 || combinacion[i] > 50) {
+					System.out.print("Número fuera de rango, introdúzca uno entre 1 y 50: ");
+					combinacion[i] = Integer.parseInt(teclado.nextLine());
+				}
+			}
+			
+			for(int i = 0; i<COMBINACION; i++) {
+				System.out.print("Introduzca el número "+i+" de las estrellas (entre 1 y 12): ");
+				estrellas[i] = Integer.parseInt(teclado.nextLine());
+				
+				while(estrellas[i] < 1 || estrellas[i] > 12) {
+					System.out.print("Número fuera de rango, introdúzca uno entre 1 y 12: ");
+					estrellas[i] = Integer.parseInt(teclado.nextLine());
+				}
+			}
+			
+			euromillones = new ResultadoEuromillones(combinacion, estrellas);
+		} catch (IllegalStateException | NoSuchElementException | NumberFormatException e) {
+			e.printStackTrace();
+			throw e;
 		}
-		
-		System.out.println("Introduzca una combinacion de dos numeros de estrellas entre 1 y 12 cada uno: ");
-		
-		for (int i = 0; i < ESTRELLAS; i++) {
-			System.out.print("Numero "+(i+1)+": ");
-			estrellas[i] = numeroCorrectoEstrellas(teclado);
-		}
-		
-		ResultadoEuromillones euromillones = new ResultadoEuromillones(combinacion, estrellas);
 		
 		return euromillones;
 	}
 	
-	private int numeroCorrectoCombinacion(Scanner teclado) {
-		boolean correcto = false;
-		int numero = Integer.parseInt(teclado.nextLine());
-		
-		while(!correcto) {
-			
-			if (numero < 1 || numero > 50) {
-				numero = Integer.parseInt(teclado.nextLine());
-			} else {
-				correcto = true;
-			}
-		}
-		
-		return numero;
-	}
-	
-	private int numeroCorrectoEstrellas(Scanner teclado) {
-		boolean correcto = false;
-		int numero = Integer.parseInt(teclado.nextLine());
-		
-		while(!correcto) {
-			
-			if (numero < 1 || numero > 12) {
-				numero = Integer.parseInt(teclado.nextLine());
-			} else {
-				correcto = true;
-			}
-		}
-		
-		return numero;
-	}
-	
 	@Override
 	public String toString() {
-		return "SorteoEuromillones [" + super.toString() + "]";
+		return "SorteoEuromillones {" + super.toString() + "}";
 	}
 
 }

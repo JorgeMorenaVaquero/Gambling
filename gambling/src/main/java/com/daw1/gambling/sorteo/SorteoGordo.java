@@ -84,7 +84,7 @@ public class SorteoGordo extends Sorteo {
 
 	@Override
 	public String toString() {
-		return "SorteoGordo [" + super.toString() + "]";
+		return "SorteoGordo {" + super.toString() + "}";
 	}
 
 }
