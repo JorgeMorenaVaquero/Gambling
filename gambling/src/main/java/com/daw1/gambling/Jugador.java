@@ -69,8 +69,8 @@ public class Jugador {
 
 	@Override
 	public String toString() {
-		return "Jugador [id=" + id + ", dni=" + dni + ", dinero=" + dinero + ", correoElectronico=" + correoElectronico
-				+ ", contrasenna=" + contrasenna + ", telefono=" + telefono + "]";
+		return "Jugador {id: " + id + ", DNI: " + dni + ", Saldo en cuenta: " + dinero + ", Correo Electrónico: " + correoElectronico
+				+ ", Contraseña: " + contrasenna + ", Teléfono: " + telefono + "}";
 	}
 
 }
